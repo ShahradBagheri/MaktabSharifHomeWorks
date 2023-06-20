@@ -32,7 +32,7 @@ public class BaseServiceImpl<ID extends Serializable,TYPE extends BaseEntity<ID>
 
     @Override
     public TYPE findById(ID id) throws SQLException {
-        return null;
+        return repository.findById(id);
     }
 
     @Override
