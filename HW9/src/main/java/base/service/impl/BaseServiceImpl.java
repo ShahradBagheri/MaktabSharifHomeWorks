@@ -1,0 +1,36 @@
+package base.service.impl;
+
+import base.model.BaseEntity;
+import base.repository.BaseRepository;
+import base.service.BaseService;
+
+import java.io.Serializable;
+import java.sql.SQLException;
+import java.util.List;
+
+public class BaseServiceImpl<ID extends Serializable,TYPE extends BaseEntity<ID>, R extends BaseRepository<ID,TYPE>> implements BaseService<ID,TYPE> {
+    @Override
+    public void save(TYPE entity) throws SQLException {
+
+    }
+
+    @Override
+    public void delete(ID id) throws SQLException {
+
+    }
+
+    @Override
+    public List<TYPE> findAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public TYPE findById(ID id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void update(TYPE entity) throws SQLException {
+
+    }
+}
