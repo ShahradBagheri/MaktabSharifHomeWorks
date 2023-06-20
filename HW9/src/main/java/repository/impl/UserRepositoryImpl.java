@@ -3,6 +3,8 @@ package repository.impl;
 import base.repository.impl.BaseRepositoryImpl;
 import model.User;
 import repository.UserRepository;
+import util.ApplicationContext;
+import util.Constant;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -52,6 +54,13 @@ public class UserRepositoryImpl extends BaseRepositoryImpl<Integer, User> implem
 
     @Override
     public boolean isExistsUsername(String username) throws SQLException {
+        String sql="SELECT username FROM "+getTableName()+" WHERE username = ?";
+        try (PreparedStatement preparedStatement = ApplicationContext.CONNECTION.prepareStatement(sql)){
+            preparedStatement.setString(1,username);
+            ResultSet foundUsername = preparedStatement.executeQuery();
+            if (foundUsername.next())
+                throw new RuntimeException();
+        }
         return false;
     }
 
