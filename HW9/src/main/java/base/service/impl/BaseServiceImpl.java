@@ -22,7 +22,7 @@ public class BaseServiceImpl<ID extends Serializable,TYPE extends BaseEntity<ID>
 
     @Override
     public void delete(ID id) throws SQLException {
-
+        repository.delete(id);
     }
 
     @Override
