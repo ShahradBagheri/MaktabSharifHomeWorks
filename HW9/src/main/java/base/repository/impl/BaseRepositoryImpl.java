@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseRepositoryImpl <ID extends Serializable, TYPE extends BaseEntity<ID>> implements BaseRepository<ID, TYPE> {
@@ -53,8 +54,16 @@ public abstract class BaseRepositoryImpl <ID extends Serializable, TYPE extends 
     }
 
     @Override
-    public List findAll() throws SQLException {
-        return null;
+    public List<TYPE> findAll() throws SQLException {
+        String query = " SELECT * FROM " + getTableName();
+        try (PreparedStatement statement = ApplicationContext.CONNECTION.prepareStatement(query)) {
+            ResultSet resultSet = statement.executeQuery();
+            List<TYPE> entities = new ArrayList<>();
+            while (resultSet.next()) {
+                entities.add(mapResultSetToEntity(resultSet));
+            }
+            return entities;
+        }
     }
     public abstract String getTableName();
 
