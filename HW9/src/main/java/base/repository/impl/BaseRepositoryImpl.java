@@ -44,8 +44,12 @@ public abstract class BaseRepositoryImpl <ID extends Serializable, TYPE extends 
     }
 
     @Override
-    public void update(BaseEntity entity) throws SQLException {
-
+    public void update(TYPE entity) throws SQLException {
+        String query = "UPDATE " + getTableName() + " SET " + getUpdateQueryParams() + " WHERE id = ?";
+        try (PreparedStatement statement = ApplicationContext.CONNECTION.prepareStatement(query)) {
+            fillParamForStatement(statement, entity);
+            statement.executeUpdate();
+        }
     }
 
     @Override
