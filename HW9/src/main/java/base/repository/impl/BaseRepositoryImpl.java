@@ -2,6 +2,7 @@ package base.repository.impl;
 
 import base.model.BaseEntity;
 import base.repository.BaseRepository;
+import util.ApplicationContext;
 
 import java.io.Serializable;
 import java.sql.PreparedStatement;
@@ -9,9 +10,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public abstract class BaseRepositoryImpl <ID extends Serializable, TYPE extends BaseEntity<ID>> implements BaseRepository {
+public abstract class BaseRepositoryImpl <ID extends Serializable, TYPE extends BaseEntity<ID>> implements BaseRepository<ID, TYPE> {
     @Override
-    public void save(BaseEntity entity) throws SQLException {
+    public void save(TYPE entity) throws SQLException {
+        String query = "INSERT INTO " + getTableName() +" "+getColumnsName()+ " VALUES (" + getCountOfQuestionMarkForParams() + ")";
+        try (PreparedStatement statement = ApplicationContext.CONNECTION.prepareStatement(query)) {
+
+            fillParamForStatement(statement, entity);
+            statement.executeUpdate();
+        }
 
     }
 
