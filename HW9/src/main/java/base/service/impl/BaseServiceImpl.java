@@ -27,7 +27,7 @@ public class BaseServiceImpl<ID extends Serializable,TYPE extends BaseEntity<ID>
 
     @Override
     public List<TYPE> findAll() throws SQLException {
-        return null;
+        return repository.findAll();
     }
 
     @Override
