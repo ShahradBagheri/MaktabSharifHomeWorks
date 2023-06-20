@@ -17,18 +17,22 @@ public abstract class BaseRepositoryImpl <ID extends Serializable, TYPE extends 
         try (PreparedStatement statement = ApplicationContext.CONNECTION.prepareStatement(query)) {
 
             fillParamForStatement(statement, entity);
-            statement.executeUpdate();
+            statement.execute();
         }
 
     }
 
     @Override
-    public void delete(Serializable serializable) throws SQLException {
-
+    public void delete(ID id) throws SQLException {
+        String query = "DELETE FROM " + getTableName() + " WHERE id = ? ";
+        try (PreparedStatement statement = ApplicationContext.CONNECTION.prepareStatement(query)) {
+            statement.setInt(1, (Integer) id);
+            statement.execute();
+        }
     }
 
     @Override
-    public BaseEntity findById(Serializable serializable) throws SQLException {
+    public TYPE findById(ID id) throws SQLException {
         return null;
     }
 
