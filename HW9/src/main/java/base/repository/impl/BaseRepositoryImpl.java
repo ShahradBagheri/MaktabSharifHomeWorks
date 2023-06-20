@@ -33,6 +33,13 @@ public abstract class BaseRepositoryImpl <ID extends Serializable, TYPE extends 
 
     @Override
     public TYPE findById(ID id) throws SQLException {
+        String query="SELECT * FROM "+getTableName()+ " WHERE id = ? ;";
+        try (PreparedStatement statement = ApplicationContext.CONNECTION.prepareStatement(query)){
+            statement.setInt(1, (Integer) id);
+            ResultSet resultSet=statement.executeQuery();
+            if (resultSet.next())
+                return mapResultSetToEntity(resultSet);
+        }
         return null;
     }
 
