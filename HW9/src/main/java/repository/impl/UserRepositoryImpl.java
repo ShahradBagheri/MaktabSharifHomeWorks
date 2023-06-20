@@ -16,7 +16,7 @@ public class UserRepositoryImpl extends BaseRepositoryImpl<Integer, User> implem
 
     @Override
     public String getColumnsName() {
-        return null;
+        return "(first_name,last_name,username,password,national_code,phone)";
     }
 
     @Override
