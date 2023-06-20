@@ -21,7 +21,7 @@ public class UserRepositoryImpl extends BaseRepositoryImpl<Integer, User> implem
 
     @Override
     public String getUpdateQueryParams() {
-        return null;
+        return "?,?,?,?,?,?";
     }
 
     @Override
