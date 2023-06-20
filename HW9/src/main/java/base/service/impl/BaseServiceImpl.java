@@ -17,7 +17,7 @@ public class BaseServiceImpl<ID extends Serializable,TYPE extends BaseEntity<ID>
 
     @Override
     public void save(TYPE entity) throws SQLException {
-
+        repository.save(entity);
     }
 
     @Override
