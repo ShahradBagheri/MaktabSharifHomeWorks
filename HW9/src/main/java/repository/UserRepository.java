@@ -10,7 +10,7 @@ public interface UserRepository extends BaseRepository<Integer, User> {
 
     boolean isExistsNatCode(String natCode) throws SQLException;
 
-    boolean isExistsPhone(String phone) throws SQLException;
+    boolean isExistsEmail(String phone) throws SQLException;
 
     User findUserByUsername(String username) throws SQLException;
 }
