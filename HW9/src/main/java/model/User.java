@@ -13,14 +13,14 @@ public class User extends BaseEntity<Integer> {
 
     private String natCode;
 
-    private String phone;
+    private String email;
     public User(String firstName, String lastName, String username, String password, String natCode, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.natCode = natCode;
         this.username = username;
         this.password = password;
-        this.phone = phone;
+        this.email = phone;
     }
 
     public User(Integer id, String firstName, String lastName,  String username, String password,String natCode, String phone) {
@@ -30,7 +30,7 @@ public class User extends BaseEntity<Integer> {
         this.natCode = natCode;
         this.username = username;
         this.password = password;
-        this.phone = phone;
+        this.email = phone;
     }
 
     public String getFirstName() {
@@ -73,12 +73,12 @@ public class User extends BaseEntity<Integer> {
         this.password = password;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
@@ -90,7 +90,7 @@ public class User extends BaseEntity<Integer> {
                 ", natCode='" + natCode + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
+                ", phone='" + email + '\'' +
                 '}';
     }
 }
