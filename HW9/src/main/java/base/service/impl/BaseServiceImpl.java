@@ -9,6 +9,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class BaseServiceImpl<ID extends Serializable,TYPE extends BaseEntity<ID>, R extends BaseRepository<ID,TYPE>> implements BaseService<ID,TYPE> {
+    protected final R repository;
+
+    public BaseServiceImpl(R repository) {
+        this.repository = repository;
+    }
+
     @Override
     public void save(TYPE entity) throws SQLException {
 
