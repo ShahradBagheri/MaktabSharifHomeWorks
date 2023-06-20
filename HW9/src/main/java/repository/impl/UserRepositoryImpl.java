@@ -31,12 +31,17 @@ public class UserRepositoryImpl extends BaseRepositoryImpl<Integer, User> implem
 
     @Override
     public User mapResultSetToEntity(ResultSet resultSet) throws SQLException {
-        return null;
+
     }
 
     @Override
     public void fillParamForStatement(PreparedStatement preparedStatement, User entity) throws SQLException {
-
+        preparedStatement.setString(1, entity.getFirstName());
+        preparedStatement.setString(2, entity.getLastName());
+        preparedStatement.setString(3, entity.getUsername());
+        preparedStatement.setString(4, entity.getPassword());
+        preparedStatement.setString(5, entity.getNatCode());
+        preparedStatement.setString(6, entity.getEmail());
     }
 
     @Override
