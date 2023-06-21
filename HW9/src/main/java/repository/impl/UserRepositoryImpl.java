@@ -59,7 +59,7 @@ public class UserRepositoryImpl extends BaseRepositoryImpl<Integer, User> implem
             preparedStatement.setString(1,username);
             ResultSet foundUsername = preparedStatement.executeQuery();
             if (foundUsername.next())
-                throw new RuntimeException();
+                throw new RuntimeException("this username already exits");
         }
         return false;
     }
