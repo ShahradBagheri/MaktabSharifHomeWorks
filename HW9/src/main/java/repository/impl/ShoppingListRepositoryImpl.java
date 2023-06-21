@@ -16,26 +16,30 @@ public class ShoppingListRepositoryImpl extends BaseRepositoryImpl<Integer, Shop
 
     @Override
     public String getColumnsName() {
-        return null;
+        return "(name,amount,price)";
     }
 
     @Override
     public String getUpdateQueryParams() {
-        return null;
+        return "?,?,?";
     }
 
     @Override
     public String getCountOfQuestionMarkForParams() {
-        return null;
+        return "name=? , amount=?, price=?";
     }
 
     @Override
     public ShoppingList mapResultSetToEntity(ResultSet resultSet) throws SQLException {
-        return null;
+        return new ShoppingList(resultSet.getString(1),
+                resultSet.getInt(2),
+                resultSet.getInt(3));
     }
 
     @Override
     public void fillParamForStatement(PreparedStatement preparedStatement, ShoppingList entity) throws SQLException {
-
+        preparedStatement.setString(1, entity.getName());
+        preparedStatement.setInt(2, entity.getAmount());
+        preparedStatement.setInt(3, entity.getPrice());
     }
 }
