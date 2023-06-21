@@ -90,6 +90,21 @@ public class UserRepositoryImpl extends BaseRepositoryImpl<Integer, User> implem
 
     @Override
     public User findUserByUsername(String username) throws SQLException {
+        String sql = "SELECT * FROM " + getTableName() + " WHERE username = ?";
+        try (PreparedStatement preparedStatement = ApplicationContext.CONNECTION.prepareStatement(sql)) {
+            preparedStatement.setString(1, username);
+            ResultSet foundUser = preparedStatement.executeQuery();
+            if (foundUser.next())
+                return new User(
+                        foundUser.getInt(1),
+                        foundUser.getString(2),
+                        foundUser.getString(3),
+                        foundUser.getString(4),
+                        foundUser.getString(5),
+                        foundUser.getString(6),
+                        foundUser.getString(7)
+                );
+        }
         return null;
     }
 }
