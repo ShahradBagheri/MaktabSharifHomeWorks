@@ -3,6 +3,7 @@ package repository.impl;
 import base.repository.impl.BaseRepositoryImpl;
 import model.ShoppingList;
 import repository.ShoppingListRepository;
+import util.ApplicationContext;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,5 +42,16 @@ public class ShoppingListRepositoryImpl extends BaseRepositoryImpl<Integer, Shop
         preparedStatement.setString(1, entity.getName());
         preparedStatement.setInt(2, entity.getAmount());
         preparedStatement.setInt(3, entity.getPrice());
+    }
+
+    @Override
+    public int sumAllPrices() throws SQLException {
+        String query="SELECT count(price) FROM "+getTableName();
+        try (PreparedStatement statement = ApplicationContext.CONNECTION.prepareStatement(query)){
+            ResultSet resultSet=statement.executeQuery();
+            if (resultSet.next())
+                return resultSet.getInt(1);
+        }
+        return -1;
     }
 }
