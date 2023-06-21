@@ -98,6 +98,22 @@ public class Menu {
         }
     }
     public static void dashboardMenu(){
-        System.out.println("nice");
+        while (true){
+            System.out.println("Welcome\nChoose an option\n1.Edit users");
+            switch (scanner.nextLine()){
+                case "1":
+                    editUsers();
+                    break;
+                case "2":
+            }
+        }
+    }
+    public static void editUsers(){
+        System.out.println("Choose an option\n1.Load user\n2.Delete user");
+        switch (scanner.nextLine()){
+            case "1":
+                loadUser();
+                break;
+        }
     }
 }
