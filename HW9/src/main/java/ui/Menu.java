@@ -109,7 +109,7 @@ public class Menu {
         }
     }
     public static void editUsers(){
-        System.out.println("Choose an option\n1.Load user\n2.Delete user");
+        System.out.println("Choose an option\n1.Load user\n2.Delete user\n3.Update user\n4.Go back");
         switch (scanner.nextLine()){
             case "1":
                 System.out.println(loadUser());
@@ -117,6 +117,11 @@ public class Menu {
             case "2":
                 deleteUser();
                 break;
+            case "3":
+                updateUser();
+                break;
+            default:
+                System.out.println("Not a valid option");
         }
     }
     public static String loadUser(){
@@ -142,6 +147,7 @@ public class Menu {
             try {
                 idToDelete = Integer.parseInt(scanner.nextLine());
                 ApplicationContext.USER_REPOSITORY.delete(idToDelete);
+                break;
             }catch (NumberFormatException e) {
                 System.out.println("Enter a number");
             } catch (SQLException e) {
@@ -149,4 +155,33 @@ public class Menu {
             }
         }
     }
+    public static void updateUser(){
+        User updateUser;
+        int rowsUpdated;
+        while (true){
+            System.out.println("Enter id");
+            int id = Integer.parseInt(scanner.nextLine());
+            System.out.println("Enter firstname");
+            String firstname = scanner.nextLine();
+            System.out.println("Enter lastname");
+            String lastname = scanner.nextLine();
+            String username = validateUsername();
+            System.out.println("Enter Password");
+            String password = scanner.nextLine();
+            String natCode = validateNatCode();
+            String email = validateEmail();
+            try{
+                rowsUpdated = ApplicationContext.USER_SERVICE.update(new User(id,firstname,lastname,username,password,natCode,email));
+                if (rowsUpdated != 0){
+                    System.out.println("User Updated");
+                    break;
+                }else {
+                    System.out.println("No user with that id was found or any user was updated");
+                }
+            }catch (SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
 }
