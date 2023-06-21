@@ -1,4 +1,8 @@
 package repository;
 
-public class ShoppingListRepository {
+import base.repository.BaseRepository;
+import model.ShoppingList;
+
+public interface ShoppingListRepository extends BaseRepository<Integer, ShoppingList> {
+
 }
