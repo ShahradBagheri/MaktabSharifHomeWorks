@@ -32,9 +32,7 @@ public class ShoppingListRepositoryImpl extends BaseRepositoryImpl<Integer, Shop
 
     @Override
     public ShoppingList mapResultSetToEntity(ResultSet resultSet) throws SQLException {
-        return new ShoppingList(resultSet.getString(1),
-                resultSet.getInt(2),
-                resultSet.getInt(3));
+        return new ShoppingList(resultSet.getInt(1),resultSet.getString(2),resultSet.getInt(3),resultSet.getInt(4));
     }
 
     @Override
