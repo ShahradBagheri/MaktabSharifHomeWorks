@@ -13,4 +13,5 @@ public interface UserRepository extends BaseRepository<Integer, User> {
     boolean isExistsEmail(String phone) throws SQLException;
 
     User findUserByUsername(String username) throws SQLException;
+    int sumAllPrices() throws SQLException;
 }
