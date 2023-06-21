@@ -3,6 +3,8 @@ package repository;
 import base.repository.BaseRepository;
 import model.ShoppingList;
 
-public interface ShoppingListRepository extends BaseRepository<Integer, ShoppingList> {
+import java.sql.SQLException;
 
+public interface ShoppingListRepository extends BaseRepository<Integer, ShoppingList> {
+    int sumAllPrices() throws SQLException;
 }
