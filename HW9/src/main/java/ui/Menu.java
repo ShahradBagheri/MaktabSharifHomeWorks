@@ -124,7 +124,9 @@ public class Menu {
                 int userId = Integer.parseInt(scanner.nextLine());
                 loadedUser = ApplicationContext.USER_SERVICE.findById(userId);
                 break;
-            }catch (NumberFormatException | SQLException e){
+            }catch (NumberFormatException e){
+                System.out.println("Enter a number");
+            }catch (SQLException e){
                 System.out.println(e.getMessage());
             }
         }
