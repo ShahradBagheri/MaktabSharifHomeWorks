@@ -218,6 +218,15 @@ public class Menu {
                     break;
                 case "3":
                     listAllItems();
+                    break;
+                case "4":
+                    showTotal();
+                    break;
+                case "5":
+                    run();
+                    break;
+                default:
+                    System.out.println("Not a valid option");
             }
         }
     }
@@ -292,6 +301,13 @@ public class Menu {
         }
         for (int i = 0; i < shoppingList.size(); i++) {
             System.out.println(shoppingList.get(i));
+        }
+    }
+    public static void showTotal(){
+        try {
+            System.out.println(ApplicationContext.SHOPPING_LIST_SERVICE.sumAllPrices());
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
         }
     }
 
