@@ -139,6 +139,9 @@ public class Menu {
             case "3":
                 updateUser();
                 break;
+            case "4":
+                dashboardMenu();
+                break;
             default:
                 System.out.println("Not a valid option");
         }
@@ -163,17 +166,24 @@ public class Menu {
 
     public static void deleteUser() {
         int idToDelete;
+
         while (true) {
+            int validation = 0;
             System.out.println("Enter user id");
             try {
                 idToDelete = Integer.parseInt(scanner.nextLine());
-                ApplicationContext.USER_REPOSITORY.delete(idToDelete);
-                break;
+                validation = ApplicationContext.USER_REPOSITORY.delete(idToDelete);
             } catch (NumberFormatException e) {
                 System.out.println("Enter a number");
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
-                ;
+            }
+            if (validation != 0) {
+                System.out.println("User deleted");
+                break;
+            } else {
+                System.out.println("No User was found nor deleted");
+                break;
             }
         }
     }
@@ -198,7 +208,7 @@ public class Menu {
                     System.out.println("User Updated");
                     break;
                 } else {
-                    System.out.println("No user with that id was found or any user was updated");
+                    System.out.println("No user with that id was found nor any user was updated");
                 }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
@@ -265,7 +275,7 @@ public class Menu {
     public static void removeFromShoppingList() {
         List<ShoppingList> shoppingList = new ArrayList<>();
         int selection;
-        int validation = 0;
+        int validation;
         try {
             shoppingList = ApplicationContext.SHOPPING_LIST_SERVICE.findAll();
         } catch (SQLException e) {
@@ -283,16 +293,17 @@ public class Menu {
         }
         try {
             validation = ApplicationContext.SHOPPING_LIST_SERVICE.delete(selection);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             return;
         }
         if (validation != 0)
             System.out.println("Product deleted");
         else
-            System.out.println("No Product was found or deleted");
+            System.out.println("No Product was found nor deleted");
     }
-    public static void listAllItems(){
+
+    public static void listAllItems() {
         List<ShoppingList> shoppingList = new ArrayList<>();
         try {
             shoppingList = ApplicationContext.SHOPPING_LIST_SERVICE.findAll();
@@ -303,10 +314,11 @@ public class Menu {
             System.out.println(shoppingList.get(i));
         }
     }
-    public static void showTotal(){
+
+    public static void showTotal() {
         try {
             System.out.println(ApplicationContext.SHOPPING_LIST_SERVICE.sumAllPrices());
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
