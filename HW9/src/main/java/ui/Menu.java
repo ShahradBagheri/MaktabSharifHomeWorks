@@ -60,7 +60,7 @@ public class Menu {
     public static String validateEmail(){
         String email;
         while (true){
-            System.out.println("Enter username");
+            System.out.println("Enter password");
             email = scanner.nextLine();
             try{
                 if (!ApplicationContext.USER_SERVICE.isExistsEmail(email))
