@@ -214,6 +214,8 @@ public class Menu {
                     addToShoppingList();
                     break;
                 case "2":
+                    removeFromShoppingList();
+                    break;
             }
         }
     }
@@ -237,7 +239,7 @@ public class Menu {
             return;
         }
         if (selection >= products.size()) {
-            System.out.println("Not a valid amount");
+            System.out.println("Not a valid selection");
             return;
         }
         Product product = products.get(selection);
@@ -247,6 +249,37 @@ public class Menu {
             System.out.println(e.getMessage());
         }
         shop();
+    }
+
+    public static void removeFromShoppingList() {
+        List<ShoppingList> shoppingList = new ArrayList<>();
+        int selection;
+        int validation = 0;
+        try {
+            shoppingList = ApplicationContext.SHOPPING_LIST_SERVICE.findAll();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        for (int i = 0; i < shoppingList.size(); i++) {
+            System.out.println(shoppingList.get(i));
+        }
+        try {
+            System.out.println("Enter the id of the product you want to remove");
+            selection = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException numberFormatException) {
+            System.out.println("Please enter a number!");
+            return;
+        }
+        try {
+            validation = ApplicationContext.SHOPPING_LIST_SERVICE.delete(selection);
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            return;
+        }
+        if (validation != 0)
+            System.out.println("Product deleted");
+        else
+            System.out.println("No Product was found or deleted");
     }
 
 }
