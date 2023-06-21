@@ -6,7 +6,7 @@ import java.util.List;
 public interface BaseService <ID,TYPE>{
     void save(TYPE entity) throws SQLException;
 
-    void delete(ID id) throws SQLException;
+    int delete(ID id) throws SQLException;
 
     List<TYPE> findAll() throws SQLException;
 
