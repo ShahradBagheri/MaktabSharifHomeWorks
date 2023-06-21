@@ -2,6 +2,8 @@ package service.impl;
 
 import base.repository.BaseRepository;
 import base.service.impl.BaseServiceImpl;
+import exception.BadCredentialException;
+import exception.UserNotFoundException;
 import model.User;
 import repository.UserRepository;
 import service.UserService;
@@ -37,8 +39,8 @@ public class UserServiceImpl extends BaseServiceImpl<Integer,User,UserRepository
                     password.equals(foundUser.getPassword()))
                 return foundUser;
             else
-                throw new BadCredentialException();
+                throw new BadCredentialException("Wrong password");
         }
-        throw new UserNotFoundException();
+        throw new UserNotFoundException("Username not found");
     }
 }
