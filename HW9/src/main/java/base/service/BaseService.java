@@ -12,5 +12,5 @@ public interface BaseService <ID,TYPE>{
 
     TYPE findById(ID id) throws SQLException;
 
-    void update(TYPE entity) throws SQLException;
+    int update(TYPE entity) throws SQLException;
 }

@@ -23,7 +23,7 @@ public class UserRepositoryImpl extends BaseRepositoryImpl<Integer, User> implem
 
     @Override
     public String getUpdateQueryParams() {
-        return "?,?,?,?,?,?";
+        return "firstname = ?, lastname = ? , username = ?, password = ? , national_code = ? , email = ?";
     }
 
     @Override

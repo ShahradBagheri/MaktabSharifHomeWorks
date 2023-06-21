@@ -11,7 +11,7 @@ public interface BaseRepository <ID extends Serializable, TYPE extends BaseEntit
 
     void delete(ID id) throws SQLException;
     TYPE findById(ID id) throws SQLException;
-    void update(TYPE entity) throws SQLException;
+    int update(TYPE entity) throws SQLException;
     List<TYPE> findAll() throws SQLException;
 
 }

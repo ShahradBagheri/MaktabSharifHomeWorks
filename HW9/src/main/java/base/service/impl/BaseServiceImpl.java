@@ -36,7 +36,7 @@ public class BaseServiceImpl<ID extends Serializable,TYPE extends BaseEntity<ID>
     }
 
     @Override
-    public void update(TYPE entity) throws SQLException {
-        repository.update(entity);
+    public int update(TYPE entity) throws SQLException {
+        return repository.update(entity);
     }
 }

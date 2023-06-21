@@ -45,6 +45,11 @@ public class ShoppingListRepositoryImpl extends BaseRepositoryImpl<Integer, Shop
     }
 
     @Override
+    public int numberOfQuestionMarks() {
+        return 3;
+    }
+
+    @Override
     public int sumAllPrices() throws SQLException {
         String query="SELECT sum(price) FROM "+getTableName();
         try (PreparedStatement statement = ApplicationContext.CONNECTION.prepareStatement(query)){
