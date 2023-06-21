@@ -22,12 +22,12 @@ public class ShoppingListRepositoryImpl extends BaseRepositoryImpl<Integer, Shop
 
     @Override
     public String getUpdateQueryParams() {
-        return "?,?,?";
+        return "name = ?, amount = ?, price = ?";
     }
 
     @Override
     public String getCountOfQuestionMarkForParams() {
-        return "name=? , amount=?, price=?";
+        return "? , ?, ?";
     }
 
     @Override
