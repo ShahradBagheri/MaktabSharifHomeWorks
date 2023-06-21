@@ -1,7 +1,9 @@
 package ui;
 
+import model.User;
 import util.ApplicationContext;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Menu {
@@ -34,6 +36,12 @@ public class Menu {
         System.out.println("Enter national_code");
         String natCode = scanner.nextLine();
         String email = validateEmail();
+        try{
+            ApplicationContext.USER_SERVICE.save(new User(firstname,lastname,username,password,natCode,email));
+            System.out.println("You have signed up");
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
     }
     public static String validateUsername() {
         String username;
