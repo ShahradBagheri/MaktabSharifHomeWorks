@@ -1,12 +1,12 @@
 package model;
 
-public enum Electronics {
+public enum Electronics implements Product{
 
-    TV("TV"),
-    RADIO("Radio");
-    private String stringValue;
+    TV,
+    RADIO;
 
-    Electronics(String stringValue){
-        this.stringValue = stringValue;
+    @Override
+    public String getName() {
+        return name();
     }
 }

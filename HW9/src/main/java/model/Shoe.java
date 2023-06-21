@@ -1,11 +1,11 @@
 package model;
 
-public enum Shoe {
-    FORMAL("Formal"),
-    SPORT("Sport");
-    private String stringValue;
+public enum Shoe implements Product{
+    FORMAL,
+    SPORT;
 
-    Shoe(String stringValue){
-        this.stringValue = stringValue;
+    @Override
+    public String getName() {
+        return name();
     }
 }
