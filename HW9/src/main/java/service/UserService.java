@@ -10,9 +10,7 @@ public interface UserService extends BaseService<Integer, User> {
 
     boolean isExistsNatCode(String natCode) throws SQLException;
 
-    boolean isExistsEmail(String phone) throws SQLException;
-
-    boolean isValidEntryData(String regex,String data);
+    boolean isExistsEmail(String email) throws SQLException;
 
     User checkCredentialInfoForLogin(String username,String password) throws Exception;
 }
