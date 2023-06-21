@@ -1,6 +1,12 @@
 package model;
 
 public enum Electronics {
-    TV,
-    Radio
+
+    TV("TV"),
+    Radio("Radio");
+    private String stringValue;
+
+    Electronics(String stringValue){
+        this.stringValue = stringValue;
+    }
 }
