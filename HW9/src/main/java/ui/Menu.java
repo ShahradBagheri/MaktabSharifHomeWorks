@@ -29,6 +29,11 @@ public class Menu {
         System.out.println("Enter lastname");
         String lastname = scanner.nextLine();
         String username = validateUsername();
+        System.out.println("Enter Password");
+        String password = scanner.nextLine();
+        System.out.println("Enter national_code");
+        String natCode = scanner.nextLine();
+        String email = validateEmail();
     }
     public static String validateUsername() {
         String username;
@@ -43,5 +48,19 @@ public class Menu {
             }
         }
         return username;
+    }
+    public static String validateEmail(){
+        String email;
+        while (true){
+            System.out.println("Enter username");
+            email = scanner.nextLine();
+            try{
+                if (!ApplicationContext.USER_SERVICE.isExistsEmail(email))
+                    break;
+            }catch (Throwable e){
+                System.out.println(e.getMessage());
+            }
+        }
+        return email;
     }
 }
