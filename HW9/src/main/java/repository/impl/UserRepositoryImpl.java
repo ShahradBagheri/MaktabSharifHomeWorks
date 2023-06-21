@@ -66,6 +66,13 @@ public class UserRepositoryImpl extends BaseRepositoryImpl<Integer, User> implem
 
     @Override
     public boolean isExistsNatCode(String natCode) throws SQLException {
+        String sql="SELECT national_code FROM "+getTableName()+" WHERE national_code = ?";
+        try (PreparedStatement preparedStatement = ApplicationContext.CONNECTION.prepareStatement(sql)){
+            preparedStatement.setString(1,natCode);
+            ResultSet foundUsername = preparedStatement.executeQuery();
+            if (foundUsername.next())
+                throw new RuntimeException("this national code already exits");
+        }
         return false;
     }
 
