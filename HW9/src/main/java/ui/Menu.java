@@ -140,8 +140,8 @@ public class Menu {
         while (true){
             System.out.println("Enter user id");
             try {
-                int userId = Integer.parseInt(scanner.nextLine());
-                ApplicationContext.USER_REPOSITORY.delete(userId);
+                idToDelete = Integer.parseInt(scanner.nextLine());
+                ApplicationContext.USER_REPOSITORY.delete(idToDelete);
             }catch (NumberFormatException e) {
                 System.out.println("Enter a number");
             } catch (SQLException e) {
