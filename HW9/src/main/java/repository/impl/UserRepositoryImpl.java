@@ -28,7 +28,7 @@ public class UserRepositoryImpl extends BaseRepositoryImpl<Integer, User> implem
 
     @Override
     public String getCountOfQuestionMarkForParams() {
-        return "firstname=? , lastname=? , username=? , password=? , national_code=? , email=?";
+        return "? ,? ,? ,? ,? ,?";
     }
 
     @Override

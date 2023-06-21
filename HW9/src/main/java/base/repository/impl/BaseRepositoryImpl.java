@@ -16,7 +16,6 @@ public abstract class BaseRepositoryImpl <ID extends Serializable, TYPE extends 
     public void save(TYPE entity) throws SQLException {
         String query = "INSERT INTO " + getTableName() +" "+getColumnsName()+ " VALUES (" + getCountOfQuestionMarkForParams() + ")";
         try (PreparedStatement statement = ApplicationContext.CONNECTION.prepareStatement(query)) {
-
             fillParamForStatement(statement, entity);
             statement.execute();
         }
