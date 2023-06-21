@@ -48,6 +48,7 @@ public abstract class BaseRepositoryImpl <ID extends Serializable, TYPE extends 
         String query = "UPDATE " + getTableName() + " SET " + getUpdateQueryParams() + " WHERE id = ?";
         try (PreparedStatement statement = ApplicationContext.CONNECTION.prepareStatement(query)) {
             fillParamForStatement(statement, entity);
+            statement.setInt(numberOfQuestionMarks()+1,(Integer) entity.getId());
             statement.executeUpdate();
         }
     }
@@ -73,4 +74,5 @@ public abstract class BaseRepositoryImpl <ID extends Serializable, TYPE extends 
     public abstract TYPE mapResultSetToEntity(ResultSet resultSet) throws SQLException;
 
     public abstract void fillParamForStatement(PreparedStatement preparedStatement, TYPE entity) throws SQLException;
+    public abstract int numberOfQuestionMarks();
 }

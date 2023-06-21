@@ -53,6 +53,11 @@ public class UserRepositoryImpl extends BaseRepositoryImpl<Integer, User> implem
     }
 
     @Override
+    public int numberOfQuestionMarks() {
+        return 6;
+    }
+
+    @Override
     public boolean isExistsUsername(String username) throws SQLException {
         String sql="SELECT username FROM "+getTableName()+" WHERE username = ?";
         try (PreparedStatement preparedStatement = ApplicationContext.CONNECTION.prepareStatement(sql)){
