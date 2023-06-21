@@ -99,7 +99,7 @@ public class Menu {
     }
     public static void dashboardMenu(){
         while (true){
-            System.out.println("Welcome\nChoose an option\n1.Edit users");
+            System.out.println("Choose an option\n1.Edit users");
             switch (scanner.nextLine()){
                 case "1":
                     editUsers();
@@ -112,8 +112,22 @@ public class Menu {
         System.out.println("Choose an option\n1.Load user\n2.Delete user");
         switch (scanner.nextLine()){
             case "1":
-                loadUser();
+                System.out.println(loadUser());
                 break;
         }
+    }
+    public static String loadUser(){
+        User loadedUser;
+        while (true) {
+            System.out.println("Enter user id");
+            try {
+                int userId = Integer.parseInt(scanner.nextLine());
+                loadedUser = ApplicationContext.USER_SERVICE.findById(userId);
+                break;
+            }catch (NumberFormatException | SQLException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        return loadedUser.toString();
     }
 }
