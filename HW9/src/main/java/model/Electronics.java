@@ -3,7 +3,7 @@ package model;
 public enum Electronics {
 
     TV("TV"),
-    Radio("Radio");
+    RADIO("Radio");
     private String stringValue;
 
     Electronics(String stringValue){
