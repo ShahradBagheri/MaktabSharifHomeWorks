@@ -1,6 +1,11 @@
 package model;
 
 public enum Shoe {
-    formal,
-    sport
+    FORMAL("Formal"),
+    SPORT("Sport");
+    private String stringValue;
+
+    Shoe(String stringValue){
+        this.stringValue = stringValue;
+    }
 }
