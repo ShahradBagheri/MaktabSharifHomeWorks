@@ -216,6 +216,8 @@ public class Menu {
                 case "2":
                     removeFromShoppingList();
                     break;
+                case "3":
+                    listAllItems();
             }
         }
     }
@@ -280,6 +282,17 @@ public class Menu {
             System.out.println("Product deleted");
         else
             System.out.println("No Product was found or deleted");
+    }
+    public static void listAllItems(){
+        List<ShoppingList> shoppingList = new ArrayList<>();
+        try {
+            shoppingList = ApplicationContext.SHOPPING_LIST_SERVICE.findAll();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        for (int i = 0; i < shoppingList.size(); i++) {
+            System.out.println(shoppingList.get(i));
+        }
     }
 
 }
