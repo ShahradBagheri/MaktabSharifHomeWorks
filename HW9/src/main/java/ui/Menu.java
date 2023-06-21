@@ -1,5 +1,7 @@
 package ui;
 
+import util.ApplicationContext;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -22,6 +24,24 @@ public class Menu {
         }
     }
     public static void signupMenu(){
-
+        System.out.println("Enter firstname");
+        String firstname = scanner.nextLine();
+        System.out.println("Enter lastname");
+        String lastname = scanner.nextLine();
+        String username = validateUsername();
+    }
+    public static String validateUsername() {
+        String username;
+        while (true){
+            System.out.println("Enter username");
+            username = scanner.nextLine();
+            try{
+                if (!ApplicationContext.USER_SERVICE.isExistsUsername(username))
+                    break;
+            }catch (Throwable e){
+                System.out.println(e.getMessage());
+            }
+        }
+        return username;
     }
 }
