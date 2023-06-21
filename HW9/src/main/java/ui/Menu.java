@@ -16,6 +16,7 @@ public class Menu {
                     signupMenu();
                     break;
                 case "2":
+                    loginMenu();
                     break;
                 case "3":
                     System.exit(0);
@@ -83,5 +84,20 @@ public class Menu {
             }
         }
         return natCode;
+    }
+    public static void loginMenu(){
+        System.out.println("Enter username");
+        String username = scanner.nextLine();
+        System.out.println("Enter password");
+        String password = scanner.nextLine();
+        try{
+            User loggedInUser = ApplicationContext.USER_SERVICE.checkCredentialInfoForLogin(username,password);
+            dashboardMenu();
+        }catch (Throwable e){
+            System.out.println(e.getMessage());
+        }
+    }
+    public static void dashboardMenu(){
+        System.out.println("nice");
     }
 }
