@@ -77,7 +77,14 @@ public class UserRepositoryImpl extends BaseRepositoryImpl<Integer, User> implem
     }
 
     @Override
-    public boolean isExistsEmail(String phone) throws SQLException {
+    public boolean isExistsEmail(String email) throws SQLException {
+        String sql="SELECT email FROM "+getTableName()+" WHERE email = ?";
+        try (PreparedStatement preparedStatement = ApplicationContext.CONNECTION.prepareStatement(sql)){
+            preparedStatement.setString(1,email);
+            ResultSet foundUsername = preparedStatement.executeQuery();
+            if (foundUsername.next())
+                throw new RuntimeException("this email code already exits");
+        }
         return false;
     }
 
