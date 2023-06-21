@@ -23,11 +23,11 @@ public abstract class BaseRepositoryImpl <ID extends Serializable, TYPE extends 
     }
 
     @Override
-    public void delete(ID id) throws SQLException {
+    public int delete(ID id) throws SQLException {
         String query = "DELETE FROM " + getTableName() + " WHERE id = ? ";
         try (PreparedStatement statement = ApplicationContext.CONNECTION.prepareStatement(query)) {
             statement.setInt(1, (Integer) id);
-            statement.execute();
+            return statement.executeUpdate();
         }
     }
 
