@@ -34,7 +34,7 @@ public class Menu {
         System.out.println("Enter Password");
         String password = scanner.nextLine();
         System.out.println("Enter national_code");
-        String natCode = scanner.nextLine();
+        String natCode = validateNatCode();
         String email = validateEmail();
         try{
             ApplicationContext.USER_SERVICE.save(new User(firstname,lastname,username,password,natCode,email));
@@ -70,5 +70,19 @@ public class Menu {
             }
         }
         return email;
+    }
+    public static String validateNatCode(){
+        String natCode;
+        while (true){
+            System.out.println("Enter national code");
+            natCode = scanner.nextLine();
+            try{
+                if (!ApplicationContext.USER_SERVICE.isExistsNatCode(natCode))
+                    break;
+            }catch (Throwable e){
+                System.out.println(e.getMessage());
+            }
+        }
+        return natCode;
     }
 }
