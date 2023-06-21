@@ -114,6 +114,9 @@ public class Menu {
             case "1":
                 System.out.println(loadUser());
                 break;
+            case "2":
+                deleteUser();
+                break;
         }
     }
     public static String loadUser(){
@@ -131,5 +134,19 @@ public class Menu {
             }
         }
         return loadedUser.toString();
+    }
+    public static void deleteUser(){
+        int idToDelete;
+        while (true){
+            System.out.println("Enter user id");
+            try {
+                int userId = Integer.parseInt(scanner.nextLine());
+                ApplicationContext.USER_REPOSITORY.delete(userId);
+            }catch (NumberFormatException e) {
+                System.out.println("Enter a number");
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }
