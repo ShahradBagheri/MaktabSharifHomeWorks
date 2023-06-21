@@ -45,4 +45,14 @@ public class ShoppingList extends BaseEntity<Integer> {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    @Override
+    public String toString() {
+        return "ShoppingList{" +
+                "name='" + name + '\'' +
+                ", amount=" + amount +
+                ", price=" + price +
+                ", id=" + id +
+                '}';
+    }
 }
