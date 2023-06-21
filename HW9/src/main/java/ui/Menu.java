@@ -33,7 +33,6 @@ public class Menu {
         String username = validateUsername();
         System.out.println("Enter Password");
         String password = scanner.nextLine();
-        System.out.println("Enter national_code");
         String natCode = validateNatCode();
         String email = validateEmail();
         try{
