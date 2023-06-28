@@ -22,7 +22,7 @@ public class CustomHashmap<K, V> {
     public void put(K key, V value){
         if (key == null)
             throw new IllegalArgumentException("key cant be null");
-        for (int i = 0; i < hashmap.length; i++) {
+        for (int i = 0; i < size; i++) {
             if (hashmap[i].getKey() == key) {
                 hashmap[i].setValue(value);
                 return;
@@ -35,7 +35,7 @@ public class CustomHashmap<K, V> {
     }
 
     public V get(K key) {
-        for (int i = 0; i < hashmap.length; i++) {
+        for (int i = 0; i < size; i++) {
             if (hashmap[i].getKey() == key) {
                 return hashmap[i].getValue();
             }
