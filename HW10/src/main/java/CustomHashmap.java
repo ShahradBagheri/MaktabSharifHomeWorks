@@ -40,6 +40,15 @@ public class CustomHashmap<K, V> {
         return null;
     }
 
+    public boolean containsKey(K key) {
+        for (int i = 0; i < hashmap.length; i++) {
+            if (hashmap[i].getKey() == key) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private static class Map<K, V> {
         private K key;
         private V value;
