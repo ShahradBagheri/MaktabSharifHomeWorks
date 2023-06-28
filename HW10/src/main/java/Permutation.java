@@ -12,14 +12,16 @@ public class Permutation {
             Map<Character, Integer> charCounts = countCharacters(inputArgs[0]);
             actuallyGeneratePermutations(charCounts, "", inputArgs[0].length(), permutations);
             return permutations;
-        }else if (inputArgs.length == 2){
+        }else {
             List<String> permutations = new ArrayList<>();
             Map<Character, Integer> charCounts = countCharacters(inputArgs[0]);
             actuallyGeneratePermutations(charCounts, "", inputArgs[0].length(), permutations);
-            System.out.println(permutations.contains(inputArgs[1]));
-            return permutations;
-        }else {
-            throw new IllegalArgumentException("too many arguments given");
+
+            List<String> isExists = new ArrayList<>();
+            for (int i = 1; i < inputArgs.length; i++) {
+                isExists.add(Boolean.toString(permutations.contains(inputArgs[i])));
+            }
+            return isExists;
         }
     }
 
