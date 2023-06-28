@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -55,6 +56,14 @@ public class CustomHashmap<K, V> {
 
     public boolean isEmpty(){
         return size == 0;
+    }
+
+    public List<V> getAll(){
+        List<V> outputList = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            outputList.add(this.hashmap[i].getValue());
+        }
+        return outputList;
     }
 
     private static class Map<K, V> {
