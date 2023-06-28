@@ -18,6 +18,18 @@ public class CustomHashmap<K, V> {
         hashmap = new Map[capacity];
     }
 
+    public void put(K key, V value){
+        if (key == null)
+            throw new RuntimeException("key cant be null");
+        for (Map<K, V> kvMap : hashmap) {
+            if (kvMap.getKey() == key) {
+                kvMap.setValue(value);
+                return;
+            }
+        }
+        hashmap[size] = new Map<>(key, value);
+        size++;
+    }
 
     private static class Map<K, V> {
         private K key;
