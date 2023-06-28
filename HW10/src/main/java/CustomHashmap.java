@@ -53,6 +53,10 @@ public class CustomHashmap<K, V> {
         return this.size;
     }
 
+    public boolean isEmpty(){
+        return size == 0;
+    }
+
     private static class Map<K, V> {
         private K key;
         private V value;
