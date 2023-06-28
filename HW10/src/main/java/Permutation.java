@@ -4,11 +4,27 @@ import java.util.List;
 import java.util.Map;
 
 public class Permutation {
+    public static void main(String[] args) {
+        System.out.println(generatePermutations("cat"));
+    }
     public static List<String> generatePermutations(String word) {
-        List<String> permutations = new ArrayList<>();
-        Map<Character, Integer> charCounts = countCharacters(word);
-        actuallyGeneratePermutations(charCounts, "", word.length(), permutations);
-        return permutations;
+        String[] inputArgs = word.split(" ");
+
+        if(inputArgs.length == 1){
+            List<String> permutations = new ArrayList<>();
+            Map<Character, Integer> charCounts = countCharacters(inputArgs[0]);
+            actuallyGeneratePermutations(charCounts, "", inputArgs[0].length(), permutations);
+            return permutations;
+        }else if (inputArgs.length == 2){
+            List<String> permutations = new ArrayList<>();
+            Map<Character, Integer> charCounts = countCharacters(inputArgs[0]);
+            actuallyGeneratePermutations(charCounts, "", inputArgs[0].length(), permutations);
+            System.out.println(permutations.contains(inputArgs[1]));
+            return permutations;
+        }else {
+            System.out.println("not a valid amount of inputs");
+            return null;
+        }
     }
 
     public static Map<Character, Integer> countCharacters(String word) {
