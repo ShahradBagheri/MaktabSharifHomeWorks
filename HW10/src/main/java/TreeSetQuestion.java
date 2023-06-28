@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Set;
 import java.util.TreeSet;
 
 public class TreeSetQuestion {
@@ -18,5 +19,10 @@ public class TreeSetQuestion {
             System.out.print(character + " ");
         }
         System.out.println();
+    }
+    public static Set<Character> combine(TreeSet<Character> treeSet1, TreeSet<Character> treeSet2) {
+        Set<Character> unionSet = new TreeSet<>(treeSet1);
+        unionSet.addAll(treeSet2);
+        return unionSet;
     }
 }
