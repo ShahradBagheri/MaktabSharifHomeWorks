@@ -25,4 +25,9 @@ public class TreeSetQuestion {
         unionSet.addAll(treeSet2);
         return unionSet;
     }
+    public static Set<Character> common(TreeSet<Character> treeSet1, TreeSet<Character> treeSet2) {
+        Set<Character> unionSet = new TreeSet<>(treeSet1);
+        unionSet.retainAll(treeSet2);
+        return unionSet;
+    }
 }
