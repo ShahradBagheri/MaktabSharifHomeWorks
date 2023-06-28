@@ -31,6 +31,15 @@ public class CustomHashmap<K, V> {
         size++;
     }
 
+    public V get(K key) {
+        for (int i = 0; i < hashmap.length; i++) {
+            if (hashmap[i].getKey() == key) {
+                return hashmap[i].getValue();
+            }
+        }
+        return null;
+    }
+
     private static class Map<K, V> {
         private K key;
         private V value;
