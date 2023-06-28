@@ -31,6 +31,8 @@ public class CustomHashmap<K, V> {
         }
         hashmap[size] = new Map<>(key, value);
         size++;
+        if (75 < this.size/this.capacity*100)
+            resizeHashmap();
     }
 
     public V get(K key) {
