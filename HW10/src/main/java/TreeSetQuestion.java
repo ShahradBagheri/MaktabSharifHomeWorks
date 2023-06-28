@@ -13,4 +13,10 @@ public class TreeSetQuestion {
         }
         return  treeSet;
     }
+    public static void showTree(TreeSet<Character> treeSet){
+        for (Character character : treeSet) {
+            System.out.print(character + " ");
+        }
+        System.out.println();
+    }
 }
