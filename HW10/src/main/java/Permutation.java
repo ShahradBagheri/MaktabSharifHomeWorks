@@ -4,9 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 public class Permutation {
-    public static void main(String[] args) {
-        System.out.println(generatePermutations("cat"));
-    }
     public static List<String> generatePermutations(String word) {
         String[] inputArgs = word.split(" ");
 
