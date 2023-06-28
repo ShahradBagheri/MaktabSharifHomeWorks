@@ -19,8 +19,7 @@ public class Permutation {
             System.out.println(permutations.contains(inputArgs[1]));
             return permutations;
         }else {
-            System.out.println("not a valid amount of inputs");
-            return null;
+            throw new IllegalArgumentException("too many arguments given");
         }
     }
 
