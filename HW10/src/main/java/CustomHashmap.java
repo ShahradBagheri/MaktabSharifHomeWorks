@@ -49,6 +49,10 @@ public class CustomHashmap<K, V> {
         return false;
     }
 
+    public int getSize() {
+        return this.size;
+    }
+
     private static class Map<K, V> {
         private K key;
         private V value;
