@@ -7,7 +7,8 @@ public class Permutation {
     public static List<String> generatePermutations(String word) {
         List<String> permutations = new ArrayList<>();
         Map<Character, Integer> charCounts = countCharacters(word);
-        return null;
+        actuallyGeneratePermutations(charCounts, "", word.length(), permutations);
+        return permutations;
     }
 
     public static Map<Character, Integer> countCharacters(String word) {
