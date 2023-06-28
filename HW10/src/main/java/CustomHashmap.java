@@ -1,2 +1,3 @@
-public class CustomHashmap {
+public class CustomHashmap<K, V> {
+
 }
