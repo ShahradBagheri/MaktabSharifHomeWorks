@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -64,6 +65,12 @@ public class CustomHashmap<K, V> {
             outputList.add(this.hashmap[i].getValue());
         }
         return outputList;
+    }
+
+    public void resizeHashmap(){
+        Map<K,V>[] hashmap = Arrays.copyOf(this.hashmap,this.capacity*2);
+        this.capacity = this.capacity*2;
+        this.hashmap = hashmap;
     }
 
     private static class Map<K, V> {
