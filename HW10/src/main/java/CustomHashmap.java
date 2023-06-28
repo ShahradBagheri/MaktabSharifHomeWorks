@@ -21,9 +21,9 @@ public class CustomHashmap<K, V> {
     public void put(K key, V value){
         if (key == null)
             throw new RuntimeException("key cant be null");
-        for (Map<K, V> kvMap : hashmap) {
-            if (kvMap.getKey() == key) {
-                kvMap.setValue(value);
+        for (int i = 0; i < hashmap.length; i++) {
+            if (hashmap[i].getKey() == key) {
+                hashmap[i].setValue(value);
                 return;
             }
         }
