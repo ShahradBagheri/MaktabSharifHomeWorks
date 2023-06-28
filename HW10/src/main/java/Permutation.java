@@ -22,4 +22,20 @@ public class Permutation {
         }
         return charCounts;
     }
+
+    public static void actuallyGeneratePermutations(Map<Character, Integer> charCounts, String prefix, int remainingLength, List<String> permutations) {
+        if (remainingLength == 0) {
+            permutations.add(prefix);
+            return;
+        }
+
+        for (char c : charCounts.keySet()) {
+            int count = charCounts.get(c);
+            if (count > 0) {
+                charCounts.put(c, count - 1);
+                actuallyGeneratePermutations(charCounts, prefix + c, remainingLength - 1, permutations);
+                charCounts.put(c, count);
+            }
+        }
+    }
 }
