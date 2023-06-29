@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -68,5 +65,11 @@ public class Main {
         System.out.println(customHashmap.isEmpty());
         System.out.println(customHashmap.containsKey("one"));
         System.out.println(customHashmap.containsKey("1"));
+        try{
+            customHashmap.update("four","4");
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+        System.out.println(customHashmap.getAll());
     }
 }
