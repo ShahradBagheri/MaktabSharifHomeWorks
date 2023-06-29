@@ -78,6 +78,17 @@ public class CustomHashmap<K, V> {
         return capacity;
     }
 
+    public void update(K key,V value){
+        if (key == null)
+            throw new IllegalArgumentException("key cant be null");
+        for (int i = 0; i < this.size; i++) {
+            if (hashmap[i].getKey() == key) {
+                hashmap[i].setValue(value);
+                return;
+            }
+        }
+    }
+
     private static class Map<K, V> {
         private K key;
         private V value;
