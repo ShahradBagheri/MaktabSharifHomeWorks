@@ -4,7 +4,7 @@ import java.util.TreeSet;
 
 public class TreeSetQuestion {
 
-    public static TreeSet<Character> randomCharTree(){
+    public static TreeSet<Character> randomTenCharTree(){
         TreeSet<Character> treeSet = new TreeSet<>();
         Random random = new Random();
 
