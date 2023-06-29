@@ -22,20 +22,20 @@ public class CustomHashmap<K, V> {
     public void put(K key, V value){
         if (key == null)
             throw new IllegalArgumentException("key cant be null");
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < this.size; i++) {
             if (hashmap[i].getKey() == key) {
                 hashmap[i].setValue(value);
                 return;
             }
         }
         hashmap[size] = new Map<>(key, value);
-        size++;
+        this.size++;
         if (75 < this.size/this.capacity*100)
             resizeHashmap();
     }
 
     public V get(K key) {
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < this.size; i++) {
             if (hashmap[i].getKey() == key) {
                 return hashmap[i].getValue();
             }
@@ -44,7 +44,7 @@ public class CustomHashmap<K, V> {
     }
 
     public boolean containsKey(K key) {
-        for (int i = 0; i < hashmap.length; i++) {
+        for (int i = 0; i < this.size; i++) {
             if (hashmap[i].getKey() == key) {
                 return true;
             }
@@ -57,12 +57,12 @@ public class CustomHashmap<K, V> {
     }
 
     public boolean isEmpty(){
-        return size == 0;
+        return this.size == 0;
     }
 
     public List<V> getAll(){
         List<V> outputList = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < this.size; i++) {
             outputList.add(this.hashmap[i].getValue());
         }
         return outputList;
