@@ -9,8 +9,11 @@ public class Main {
         Runnable runnable3 = new FirstRunnable("Runnable 3");
 
         Thread thread1 = new Thread(runnable1);
+        thread1.setPriority(10);
         Thread thread2 = new Thread(runnable2);
+        thread2.setPriority(9);
         Thread thread3 = new Thread(runnable3);
+        thread3.setPriority(5);
 
         thread1.start();
         thread2.start();
