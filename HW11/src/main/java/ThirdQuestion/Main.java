@@ -3,7 +3,7 @@ package ThirdQuestion;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
-    public static final String sharedResource = "0";
+    public static final String SHARED_RESOURCE = "0";
 
     public static void main(String[] args) {
         Runnable runnable1 = new FirstRunnable("Runnable 1");

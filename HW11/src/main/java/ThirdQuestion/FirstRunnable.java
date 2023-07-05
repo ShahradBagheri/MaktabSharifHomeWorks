@@ -9,7 +9,7 @@ public class FirstRunnable implements Runnable {
 
     @Override
     public void run() {
-        synchronized (Main.sharedResource) {
+        synchronized (Main.SHARED_RESOURCE) {
             for (int i = 0; i < 5; i++) {
                 System.out.println(name + " using shared resource");
             }
