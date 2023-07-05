@@ -24,7 +24,7 @@ public class EvenRunnable implements Runnable {
                     }
                 }
                 sharedList.add(evenNumber);
-                notify();
+                sharedList.notify();
             }
         }
     }

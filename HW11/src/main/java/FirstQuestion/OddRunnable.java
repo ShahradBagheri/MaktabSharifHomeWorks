@@ -24,7 +24,7 @@ public class OddRunnable implements Runnable{
                     }
                 }
                 sharedList.add(oddNumber);
-                notify();
+                sharedList.notify();
             }
         }
     }
