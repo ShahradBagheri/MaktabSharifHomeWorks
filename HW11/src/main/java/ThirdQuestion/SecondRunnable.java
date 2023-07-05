@@ -1,4 +1,8 @@
 package ThirdQuestion;
 
-public class SecondRunnable {
+public class SecondRunnable implements Runnable{
+    @Override
+    public void run() {
+        System.out.println("Finally Ran");
+    }
 }
