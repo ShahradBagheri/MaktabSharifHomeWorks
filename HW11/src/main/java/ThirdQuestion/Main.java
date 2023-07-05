@@ -1,7 +1,5 @@
 package ThirdQuestion;
 
-import java.util.concurrent.locks.ReentrantLock;
-
 public class Main {
     public static final String SHARED_RESOURCE = "0";
 

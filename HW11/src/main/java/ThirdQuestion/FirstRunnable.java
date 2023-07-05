@@ -1,7 +1,7 @@
 package ThirdQuestion;
 
 public class FirstRunnable implements Runnable {
-    private String name;
+    private final String name;
 
     public FirstRunnable(String name) {
         this.name = name;
