@@ -3,7 +3,7 @@ package FirstQuestion;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
         List<Integer> list = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         GenerateList generateList = new GenerateList();
@@ -19,12 +19,13 @@ public class Main {
             thread2.start();
 
             thread2.join();
+            thread1.join();
 
             System.out.println(list);
         }catch (InputMismatchException e){
             System.out.println(e.getMessage());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
-
-
     }
 }
