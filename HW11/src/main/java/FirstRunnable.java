@@ -2,8 +2,8 @@ import java.util.List;
 
 public class FirstRunnable implements Runnable{
 
-    private List<Integer> list;
-    private int listLength;
+    private final List<Integer> list;
+    private final int listLength;
 
     public FirstRunnable(List<Integer> list, int listLength) {
         this.list = list;
@@ -13,15 +13,18 @@ public class FirstRunnable implements Runnable{
 
     @Override
     public void run() {
-        for (int i = 0; i < listLength; i += 2) {
-            while (list.size() % 2 == 0) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+        synchronized (list) {
+            for (int i = 1; i <= listLength; i += 2) {
+                while (list.size() % 2 == 0) {
+                    try {
+                        list.wait();
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
+                list.add(i);
+                list.notify();
             }
-            list.add(i);
         }
     }
 }
