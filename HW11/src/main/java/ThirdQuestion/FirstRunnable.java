@@ -1,8 +1,18 @@
 package ThirdQuestion;
 
-public class FirstRunnable implements Runnable{
+public class FirstRunnable implements Runnable {
+    private String name;
+
+    public FirstRunnable(String name) {
+        this.name = name;
+    }
+
     @Override
     public void run() {
-        System.out.println("running");
+        synchronized (Main.sharedResource) {
+            for (int i = 0; i < 5; i++) {
+                System.out.println(name + " using shared resource");
+            }
+        }
     }
 }
