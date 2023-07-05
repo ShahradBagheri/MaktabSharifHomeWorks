@@ -15,6 +15,11 @@ public class FirstRunnable implements Runnable {
     public void run() {
         synchronized (firstList) {
             firstList.add("first runnable signature");
+            try {
+                firstList.wait();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
         synchronized (secondList){
             secondList.add("second runnable signature");
