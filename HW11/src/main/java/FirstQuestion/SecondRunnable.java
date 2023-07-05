@@ -1,21 +1,21 @@
+package FirstQuestion;
+
 import java.util.List;
 
-public class FirstRunnable implements Runnable{
+public class SecondRunnable implements Runnable{
 
     private final List<Integer> list;
     private final int listLength;
 
-    public FirstRunnable(List<Integer> list, int listLength) {
+    public SecondRunnable(List<Integer> list, int listLength) {
         this.list = list;
         this.listLength = listLength;
     }
-
-
     @Override
     public void run() {
         synchronized (list) {
-            for (int i = 1; i <= listLength; i += 2) {
-                while (list.size() % 2 == 0) {
+            for (int i = 0; i <= listLength; i += 2) {
+                while (list.size() % 2 == 1) {
                     try {
                         list.wait();
                     } catch (InterruptedException e) {
