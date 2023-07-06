@@ -25,7 +25,7 @@ public class Main {
         }catch (InputMismatchException e){
             System.out.println(e.getMessage());
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());;
         }
     }
 }
