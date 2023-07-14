@@ -22,10 +22,8 @@ public class Main {
             thread1.join();
 
             System.out.println(list);
-        }catch (InputMismatchException e){
+        }catch (InputMismatchException | InterruptedException e){
             System.out.println(e.getMessage());
-        } catch (InterruptedException e) {
-            System.out.println(e.getMessage());;
         }
     }
 }
