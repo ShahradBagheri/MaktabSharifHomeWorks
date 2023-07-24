@@ -31,7 +31,8 @@ public class LambdaUtil {
      * @return function that repeats Strings
      */
     public static BiFunction<String, Integer, String> stringMultiplier() {
-        return String::repeat;
+//        return String::repeat;
+        return (string , integer) -> string.repeat(integer);
     }
 
     /**
@@ -99,7 +100,8 @@ public class LambdaUtil {
      * @return string to int converter
      */
     public static ToIntFunction<String> stringToIntConverter() {
-        return Integer::parseInt;
+//        return Integer::parseInt;
+        return (integer) -> Integer.parseInt(integer);
     }
 
     /**
