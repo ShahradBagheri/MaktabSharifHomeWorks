@@ -3,11 +3,18 @@ package ir.maktab;
 
 import ir.maktab.mockdata.MockData;
 import ir.maktab.model.Person;
+import ir.maktab.model.PersonSummary;
+import lombok.SneakyThrows;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -17,6 +24,7 @@ public class Main {
         System.out.println(thirdQuestion(MockData.getPeople()));
         System.out.println(forthQuestion(MockData.getPeople()));
         System.out.println(fifthQuestion(MockData.getPeople()));
+        System.out.println(sixthQuestion(MockData.getPeople()));
     }
 
     public static List<Person> firstQuestion(List<Person> data) {
@@ -42,5 +50,19 @@ public class Main {
                 .skip(5)
                 .limit(100)
                 .collect(Collectors.groupingBy(person -> person.getFirstName()+person.getLastName()));
+    }
+
+    public static List<PersonSummary> sixthQuestion(List<Person> data){
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+        return data.stream()
+                .map(person -> {
+                    LocalDate localDate = LocalDate.parse(person.getBirthDate(), dateTimeFormatter);
+                    return new PersonSummary(person.getId(),
+                            person.getFirstName(),
+                            person.getLastName(),
+                            Period.between(localDate, LocalDate.now()).getYears(),
+                            Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+                })
+                .toList();
     }
 }
