@@ -82,7 +82,8 @@ while true; do
                 echo "Invalid priority. Please enter a number between 1 and 3."
                 read priority
             done
-            add_task "($priority) $task_description"
+            read -p "Enter a date (YYYY-MM-DD HH:MM:SS): " user_date
+            add_task "($priority) $user_date $task_description"
             ;;
         5)
             view_incomplete_todo_list
