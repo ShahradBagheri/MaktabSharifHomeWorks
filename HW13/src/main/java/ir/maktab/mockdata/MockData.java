@@ -17,7 +17,7 @@ public class MockData {
 
     public static List<Person> getPeople() {
         try {
-            InputStream inputStream = Resources.getResource("peopleTest.json").openStream();
+            InputStream inputStream = Resources.getResource("people.json").openStream();
             String json = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
             Type listType = new TypeToken<ArrayList<Person>>(){}.getType();
             return new Gson().fromJson(json, listType);

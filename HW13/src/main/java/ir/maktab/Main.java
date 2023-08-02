@@ -4,17 +4,12 @@ package ir.maktab;
 import ir.maktab.mockdata.MockData;
 import ir.maktab.model.Person;
 import ir.maktab.model.PersonSummary;
-import lombok.SneakyThrows;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.*;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -52,9 +47,10 @@ public class Main {
                 .collect(Collectors.groupingBy(person -> person.getFirstName()+person.getLastName()));
     }
 
-    public static List<PersonSummary> sixthQuestion(List<Person> data){
+    public static double sixthQuestion(List<Person> data){
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("d/M/yyyy");
-        return data.stream()
+        List<PersonSummary> newData = data.stream()
+                .filter(person -> person.getGender().equals("Male"))
                 .map(person -> {
                     LocalDate localDate = LocalDate.parse(person.getBirthDate(), dateTimeFormatter);
                     return new PersonSummary(person.getId(),
@@ -64,5 +60,6 @@ public class Main {
                             Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant()));
                 })
                 .toList();
+        return newData.stream().mapToInt(PersonSummary::getAge).average().getAsDouble();
     }
 }
