@@ -83,7 +83,8 @@ while true; do
                 read priority
             done
             read -p "Enter a date (YYYY-MM-DD HH:MM:SS): " user_date
-            add_task "($priority) $user_date $task_description"
+            formatted_date=$(date -d "$user_date" +'%Y-%m-%d %H:%M:%S')
+            add_task "($priority) $formatted_date $task_description"
             ;;
         5)
             view_incomplete_todo_list
