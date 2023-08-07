@@ -23,7 +23,7 @@ public class Main {
     }
 
     public static List<Person> firstQuestion(List<Person> data) {
-        return data.stream().filter((person -> person.getAge() <= 50)).collect(Collectors.toList());
+        return data.stream().filter((person -> person.getAge() > 50)).collect(Collectors.toList());
     }
 
     public static List<Person> secondQuestion(List<Person> data){

@@ -49,6 +49,21 @@ function complete_task {
     echo "x $task" >> "$file_path_completed"
 }
 
+function search_Incomplete {
+  task_to_search=$1
+  grep -n "$task_to_search" todo_incomplete.txt
+}
+
+function search_Complete {
+  task_to_search=$1
+  grep -n "$task_to_search" todo_completed.txt
+}
+
+function search_Removed {
+  task_to_search=$1
+  grep -n "$task_to_search" removed_tasks.txt
+}
+
 while true; do
     echo "---------------"
     echo "Todo List App"
@@ -60,6 +75,9 @@ while true; do
     echo "5. Remove Task"
     echo "6. Mark Task as Completed"
     echo "7. Exit"
+    echo "8. Search Inside Incomplete"
+    echo "9. Search Inside Completed"
+    echo "10. Search Inside Removed"
     echo "Enter your choice: "
     read choice
 
@@ -101,6 +119,18 @@ while true; do
         7)
             echo "Exiting Todo List App."
             exit 0
+            ;;
+        8)
+            read task_to_search
+            search_Incomplete "$task_to_search"
+            ;;
+        9)
+            read task_to_search
+            search_Complete "$task_to_search"
+            ;;
+        10)
+            read task_to_search
+            search_Removed "$task_to_search"
             ;;
         *)
             echo "Invalid choice. Please try again."
