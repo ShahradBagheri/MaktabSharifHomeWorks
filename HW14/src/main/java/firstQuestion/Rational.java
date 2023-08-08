@@ -10,6 +10,9 @@ public class Rational {
     public Rational(int numerator,int denominator){
         int gcd = Math.abs(gcd(numerator,denominator));
 
+        if(denominator == 0)
+            throw new ArithmeticException("Division by zero");
+
         if (numerator < 0 && denominator < 0){
             numerator = Math.abs(numerator);
             denominator = Math.abs(denominator);
