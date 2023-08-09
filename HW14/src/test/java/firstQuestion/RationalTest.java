@@ -52,4 +52,32 @@ class RationalTest {
     public void theNegativeShouldBeStoredInNumerator(){
         assertEquals(new Rational(-1,2), new Rational(1,-2));
     }
+
+    @Test
+    public void testingSimpleToString(){
+        rational = new Rational(1,2);
+        String expectedString = "1/2";
+        assertEquals(expectedString,rational.toString());
+    }
+
+    @Test
+    public void testingToStringWithARealPositiveNumber(){
+        rational = new Rational(3,2);
+        String expectedString = "1 + 1/2";
+        assertEquals(expectedString,rational.toString());
+    }
+
+    @Test
+    public void testingToStringWithARealNegativeNumber(){
+        rational = new Rational(-3,2);
+        String expectedString = "-1 - 1/2";
+        assertEquals(expectedString,rational.toString());
+    }
+
+    @Test
+    public void testingToStringWhenTheresOnlyRealNumber(){
+        rational = new Rational(2,1);
+        String expectedString = "2";
+        assertEquals(expectedString,rational.toString());
+    }
 }

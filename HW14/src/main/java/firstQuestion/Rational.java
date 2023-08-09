@@ -61,11 +61,6 @@ public class Rational {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(numerator, denominator);
-    }
-
-    @Override
     public String toString() {
         int realNum = this.numerator / this.denominator;
         if(realNum == 0)
