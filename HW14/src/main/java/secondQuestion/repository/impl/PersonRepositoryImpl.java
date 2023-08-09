@@ -47,12 +47,15 @@ public class PersonRepositoryImpl implements PersonRepository {
         Transaction transaction = session.beginTransaction();
         String hql = "FROM Person";
         Query<Person> query = session.createQuery(hql,Person.class);
-        return query.list();
+        List<Person> result = query.list();
+        transaction.commit();
+        return result;
     }
 
     @Override
     public boolean contains(Person person) {
         var session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
         String hql = "SELECT COUNT(*) FROM Person p WHERE p.id = :personId AND p.firstname = :personFirstname AND p.lastname = :personLastname AND p.birthdate = :personBirthdate";
         Query<Long> query = session.createQuery(hql,Long.class);
         query.setParameter("personFirstname",person.getFirstname());
@@ -61,6 +64,7 @@ public class PersonRepositoryImpl implements PersonRepository {
         query.setParameter("personBirthdate",person.getBirthdate());
 
         Long result = query.getSingleResult();
+        transaction.commit();
         return result != 0;
     }
 }
