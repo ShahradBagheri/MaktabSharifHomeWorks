@@ -4,6 +4,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import secondQuestion.model.Person;
+import secondQuestion.model.Student;
+import secondQuestion.model.Teacher;
 
 public class SessionFactorySingleton {
 
@@ -19,6 +21,8 @@ public class SessionFactorySingleton {
 
             INSTANCE = new MetadataSources(registry)
                     .addAnnotatedClass(Person.class)
+                    .addAnnotatedClass(Student.class)
+                    .addAnnotatedClass(Teacher.class)
                     .buildMetadata()
                     .buildSessionFactory();
         }
