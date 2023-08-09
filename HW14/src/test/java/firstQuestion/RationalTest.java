@@ -47,4 +47,9 @@ class RationalTest {
     public void twoNegativeArgsShouldCancelEachOut(){
         assertEquals(new Rational(-1,-2), new Rational(1,2));
     }
+
+    @Test
+    public void theNegativeShouldBeStoredInNumerator(){
+        assertEquals(new Rational(-1,2), new Rational(1,-2));
+    }
 }
