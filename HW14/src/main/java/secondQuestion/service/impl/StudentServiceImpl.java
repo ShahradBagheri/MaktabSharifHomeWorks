@@ -16,12 +16,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void update(Student student) {
-studentRepository.update(student);
+        studentRepository.update(student);
     }
 
     @Override
     public void delete(Student student) {
-studentRepository.delete(student);
+        studentRepository.delete(student);
     }
 
     @Override
