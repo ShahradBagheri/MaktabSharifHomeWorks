@@ -59,6 +59,15 @@ public class PersonRepositoryImpl implements PersonRepository {
 
     @Override
     public boolean contains(Person person) {
-        return false;
+        var session = sessionFactory.getCurrentSession();
+        String hql = "SELECT COUNT(*) FROM Person p WHERE p.id = :personId AND p.firstname = :personFirstname AND p.lastname = :personLastname AND p.birthdate = :personBirthdate";
+        Query<Long> query = session.createQuery(hql,Long.class);
+        query.setParameter("personFirstname",person.getFirstname());
+        query.setParameter("personLastname",person.getLastname());
+        query.setParameter("personId",person.getId());
+        query.setParameter("personBirthdate",person.getBirthdate());
+
+        Long result = query.getSingleResult();
+        return result != 0;
     }
 }
