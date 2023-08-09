@@ -53,19 +53,6 @@ public class Rational {
     }
 
     @Override
-    public String toString() {
-        int realNum = this.numerator / this.denominator;
-        if(realNum == 0)
-            return this.numerator + "/" + this.denominator;
-        else if(this.numerator - this.denominator*realNum == 0)
-            return Integer.toString(realNum);
-        else if(this.numerator < 0)
-            return realNum + " - " + Math.abs((this.numerator - this.denominator*realNum)) + "/" + this.denominator;
-        else
-            return realNum + " + " + (this.numerator - this.denominator*realNum) + "/" + this.denominator;
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -76,5 +63,18 @@ public class Rational {
     @Override
     public int hashCode() {
         return Objects.hash(numerator, denominator);
+    }
+
+    @Override
+    public String toString() {
+        int realNum = this.numerator / this.denominator;
+        if(realNum == 0)
+            return this.numerator + "/" + this.denominator;
+        else if(this.numerator - this.denominator*realNum == 0)
+            return Integer.toString(realNum);
+        else if(this.numerator < 0)
+            return realNum + " - " + Math.abs((this.numerator - this.denominator*realNum)) + "/" + this.denominator;
+        else
+            return realNum + " + " + (this.numerator - this.denominator*realNum) + "/" + this.denominator;
     }
 }
