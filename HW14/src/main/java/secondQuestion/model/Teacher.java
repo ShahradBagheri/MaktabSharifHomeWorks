@@ -12,7 +12,7 @@ import javax.persistence.Enumerated;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(callSuper = true)
 @Entity
 public class Teacher extends Person{
 

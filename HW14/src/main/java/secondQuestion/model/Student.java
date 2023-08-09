@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(callSuper = true)
 @Entity
 public class Student extends Person {
 
@@ -19,4 +19,5 @@ public class Student extends Person {
     private String major;
 
     private String admissionYear;
+
 }

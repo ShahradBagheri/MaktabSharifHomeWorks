@@ -2,42 +2,43 @@ package secondQuestion.service.impl;
 
 import secondQuestion.enums.TeacherTier;
 import secondQuestion.model.Teacher;
+import secondQuestion.repository.impl.TeacherRepositoryImpl;
 import secondQuestion.service.TeacherService;
 
 import java.util.List;
 
 public class TeacherServiceImpl implements TeacherService {
 
-    private TeacherServiceImpl teacherService = new TeacherServiceImpl();
+    private final TeacherRepositoryImpl teacherRepository = new TeacherRepositoryImpl();
 
     @Override
     public Teacher save(Teacher teacher) {
-        return teacherService.save(teacher);
+        return teacherRepository.save(teacher);
     }
 
     @Override
     public void update(Teacher teacher) {
-        teacherService.update(teacher);
+        teacherRepository.update(teacher);
     }
 
     @Override
     public void delete(Teacher teacher) {
-        teacherService.delete(teacher);
+        teacherRepository.delete(teacher);
     }
 
     @Override
     public Teacher loadById(Long id) {
-        return teacherService.loadById(id);
+        return teacherRepository.loadById(id);
     }
 
     @Override
     public List<Teacher> loadAll() {
-        return teacherService.loadAll();
+        return teacherRepository.loadAll();
     }
 
     @Override
     public boolean contains(Teacher teacher) {
-        return teacherService.contains(teacher);
+        return teacherRepository.contains(teacher);
     }
 
     @Override
@@ -48,6 +49,6 @@ public class TeacherServiceImpl implements TeacherService {
         teacher.setTeacherId(teacherId);
         teacher.setTeacherTier(teacherTier);
 
-        return teacherService.save(teacher);
+        return teacherRepository.save(teacher);
     }
 }
