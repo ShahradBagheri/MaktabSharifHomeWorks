@@ -5,7 +5,7 @@ import secondQuestion.model.Person;
 import java.util.List;
 
 public interface PersonRepository {
-    void save(Person person);
+    Person save(Person person);
 
     void update(Person person);
 

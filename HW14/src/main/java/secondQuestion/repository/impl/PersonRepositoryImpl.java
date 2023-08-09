@@ -12,11 +12,13 @@ public class PersonRepositoryImpl implements PersonRepository {
     private final SessionFactory sessionFactory = SessionFactorySingleton.getInstance();
 
     @Override
-    public void save(Person person) {
+    public Person save(Person person) {
         var session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        session.save(person);
+        Long id = (Long) session.save(person);
+        Person savedPerson = session.get(Person.class,id);
         transaction.commit();
+        return savedPerson;
     }
 
     @Override
