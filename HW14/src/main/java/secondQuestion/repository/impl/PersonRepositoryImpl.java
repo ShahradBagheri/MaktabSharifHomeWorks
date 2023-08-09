@@ -49,12 +49,9 @@ public class PersonRepositoryImpl implements PersonRepository {
     public List<Person> loadAll() {
         var session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-        CriteriaQuery<Person> criteriaQuery = criteriaBuilder.createQuery(Person.class);
-        Root<Person> root = criteriaQuery.from(Person.class);
-        criteriaQuery.select(root);
-        Query<Person> query = session.createQuery(criteriaQuery);
-        return query.getResultList();
+        String hql = "FROM Person";
+        Query<Person> query = session.createQuery(hql,Person.class);
+        return query.list();
     }
 
     @Override
