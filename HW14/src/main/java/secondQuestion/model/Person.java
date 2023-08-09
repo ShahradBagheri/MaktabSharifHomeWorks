@@ -10,6 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Entity
 public class Person {
 
@@ -17,10 +18,8 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column()
     private String firstname;
 
-    @Column()
     private String lastname;
 
     @Column
