@@ -4,7 +4,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import secondQuestion.connection.SessionFactorySingleton;
-import secondQuestion.model.Student;
 import secondQuestion.model.Teacher;
 import secondQuestion.repository.TeacherRepository;
 

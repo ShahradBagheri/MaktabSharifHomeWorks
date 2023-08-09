@@ -1,6 +1,5 @@
 package secondQuestion.repository;
 
-import secondQuestion.model.Person;
 import secondQuestion.model.Student;
 
 import java.util.List;
