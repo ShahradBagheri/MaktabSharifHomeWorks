@@ -43,7 +43,10 @@ public class StudentRepositoryImpl implements StudentRepository {
     @Override
     public Student loadById(Long id) {
         var session = sessionFactory.getCurrentSession();
-        return session.get(Student.class,id);
+        Transaction transaction = session.beginTransaction();
+        Student student = session.get(Student.class,id);
+        transaction.commit();
+        return student;
     }
 
     @Override

@@ -44,7 +44,10 @@ public class TeacherRepositoryImpl implements TeacherRepository {
     @Override
     public Teacher loadById(Long id) {
         var session = sessionFactory.getCurrentSession();
-        return session.get(Teacher.class,id);
+        Transaction transaction = session.beginTransaction();
+        Teacher teacher = session.get(Teacher.class,id);
+        transaction.commit();
+        return teacher;
     }
 
     @Override

@@ -40,7 +40,10 @@ public class PersonRepositoryImpl implements PersonRepository {
     @Override
     public Person loadById(Long id) {
         var session = sessionFactory.getCurrentSession();
-        return session.get(Person.class,id);
+        Transaction transaction = session.beginTransaction();
+        Person person = session.get(Person.class,id);
+        transaction.commit();
+        return person;
     }
 
     @Override
