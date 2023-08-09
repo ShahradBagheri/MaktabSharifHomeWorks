@@ -11,6 +11,8 @@ public interface PersonRepository {
 
     void delete(Person person);
 
+    Person loadById(Long id);
+
     List<Person> loadAll();
 
     boolean contains(Person person);
