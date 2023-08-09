@@ -1,5 +1,7 @@
 package firstQuestion;
 
+import java.util.Objects;
+
 public class Rational {
     private final int numerator;
     private final int denominator;
@@ -61,5 +63,18 @@ public class Rational {
             return realNum + " - " + Math.abs((this.numerator - this.denominator*realNum)) + "/" + this.denominator;
         else
             return realNum + " + " + (this.numerator - this.denominator*realNum) + "/" + this.denominator;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rational rational = (Rational) o;
+        return numerator == rational.numerator && denominator == rational.denominator;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numerator, denominator);
     }
 }
