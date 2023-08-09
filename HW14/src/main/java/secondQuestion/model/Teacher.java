@@ -1,9 +1,6 @@
 package secondQuestion.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import secondQuestion.enums.TeacherTier;
 
 import javax.persistence.Column;
@@ -15,6 +12,7 @@ import javax.persistence.Enumerated;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity
 public class Teacher extends Person{
 
