@@ -16,22 +16,21 @@ public class Main {
         StudentServiceImpl studentService = new StudentServiceImpl();
         TeacherServiceImpl teacherService = new TeacherServiceImpl();
 
-//        Person person = new Person();
-//        person.setFirstname("Shahrad");
-//        person.setLastname("Bagheri");
-//        person.setBirthdate(Date.valueOf("2000-11-26"));
-//
-//        personService.save(person);
+        Person person = new Person();
+        person.setFirstname("Shahrad");
+        person.setLastname("Bagheri");
+        person.setBirthdate(Date.valueOf("2000-11-26"));
+        personService.save(person);
 
-//        person.setFirstname("Changed");
-//        person.setId();
+        person.setFirstname("Changed");
+        person.setId(16L);
 //
 //        personService.update(person);
 
-//        personService.delete(person);
+        personService.delete(person);
 //
-//        System.out.println(personService.loadById(2L));
-
+//        System.out.println(personService.loadById(16L));
+//
 //        System.out.println(personService.loadAll());
 
 //        System.out.println(personService.contains(person));
