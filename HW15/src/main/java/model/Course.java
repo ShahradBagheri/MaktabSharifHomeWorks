@@ -17,11 +17,11 @@ public class Course {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "student")
+    @JoinColumn(name = "student_id")
     private Student student;
 
     @ManyToOne
-    @JoinColumn(name = "professor")
+    @JoinColumn(name = "professor_id")
     private Professor professor;
 
     @Column(name = "term")
@@ -29,4 +29,7 @@ public class Course {
 
     @Column(name = "score")
     private Float score;
+
+    @Column(name = "units")
+    private int units;
 }
