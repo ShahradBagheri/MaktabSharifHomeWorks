@@ -13,9 +13,9 @@ import javax.persistence.Table;
 @ToString
 @Table(name = "employee")
 @Entity
-public class Employee extends User {
+public class Employee extends BaseUser {
 
     @Column(name = "salary")
-    private Double baseSalary;
+    private Double salary;
 
 }
