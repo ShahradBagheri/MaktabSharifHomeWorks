@@ -13,14 +13,15 @@ import java.util.Set;
 @ToString
 @Table(name = "professor")
 @Entity
-public class Professor extends User{
+public class Professor extends BaseUser {
 
     @Enumerated(value = EnumType.STRING)
     private ProfessorTier professorTier;
 
+    @Column(name = "base_salary")
     private Double baseSalary;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST}, mappedBy = "professor")
     private Set<Course> courseSet;
 
     public double calculateSalary(String  term){

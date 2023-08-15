@@ -5,8 +5,11 @@ import base.model.BaseEntity;
 import java.util.ArrayList;
 
 public class ShoppingList extends BaseEntity<Integer> {
+
     private String name;
+
     private int amount;
+
     private int price;
 
     public ShoppingList(String name, int amount, int price) {
