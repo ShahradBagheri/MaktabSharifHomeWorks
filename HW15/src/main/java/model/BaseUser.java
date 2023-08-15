@@ -10,8 +10,8 @@ import lombok.*;
 @ToString
 @Entity
 @Table(name = "users")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class User {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class BaseUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
