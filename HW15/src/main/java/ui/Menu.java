@@ -501,7 +501,7 @@ public class Menu {
             return;
         }
 
-        if (ApplicationContext.professorService.existsById(id)) {
+        if (ApplicationContext.employeeService.existsById(id)) {
             System.out.println("Employee with that id doesnt exist");
             return;
         }
