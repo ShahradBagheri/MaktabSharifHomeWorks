@@ -114,6 +114,11 @@ public class Menu {
             return;
         }
 
+        if (!ApplicationContext.courseStudentService.courseStudentExistsById(courseStudentId)){
+            System.out.println("This courseStudent doesnt exist");
+            return;
+        }
+
         if (!ApplicationContext.courseStudentService.professorOwnsCourseStudent(professor, courseStudentId)) {
             System.out.println("You dont own this course!");
             return;
