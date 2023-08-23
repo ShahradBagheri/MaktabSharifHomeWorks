@@ -1,6 +1,5 @@
 package repository;
 
-import model.Course;
 import model.Employee;
 
 import java.util.List;

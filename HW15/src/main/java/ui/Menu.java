@@ -457,7 +457,6 @@ public class Menu {
         user.setRole(Role.EMPLOYEE);
 
         Employee employee = new Employee();
-        employee.setUsername(username);
         employee.setFirstname(firstname);
         employee.setLastname(lastname);
         employee.setSalary(salary);

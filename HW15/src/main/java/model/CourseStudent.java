@@ -29,7 +29,7 @@ public class CourseStudent {
         return "CourseStudent{" +
                 "id=" + id +
                 ", course=" + course.getName() +
-                ", student=" + student.getUsername() +
+                ", student=" + student.getUser().getUsername() +
                 ", score=" + score +
                 '}';
     }

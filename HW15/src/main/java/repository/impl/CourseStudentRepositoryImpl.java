@@ -1,8 +1,6 @@
 package repository.impl;
 
-import model.Course;
 import model.CourseStudent;
-import model.Employee;
 import model.Student;
 import repository.CourseStudentRepository;
 import util.EntityManagerSingleton;

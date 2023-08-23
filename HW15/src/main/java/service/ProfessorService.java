@@ -1,8 +1,6 @@
 package service;
 
-import enumeration.ProfessorTier;
 import model.Professor;
-import model.Student;
 
 public interface ProfessorService {
 

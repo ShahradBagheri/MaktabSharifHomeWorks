@@ -1,6 +1,5 @@
 package service.impl;
 
-import model.Employee;
 import model.Student;
 import repository.StudentRepository;
 import repository.impl.StudentRepositoryImpl;

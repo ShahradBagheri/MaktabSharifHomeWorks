@@ -1,9 +1,6 @@
 package service.impl;
 
 import model.Employee;
-import model.Professor;
-import model.User;
-import org.hibernate.Transaction;
 import repository.EmployeeRepository;
 import service.EmployeeService;
 import util.ApplicationContext;
@@ -11,7 +8,6 @@ import util.EntityManagerSingleton;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import java.sql.SQLException;
 
 public class EmployeeServiceImpl implements EmployeeService {
 

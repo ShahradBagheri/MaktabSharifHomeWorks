@@ -1,8 +1,6 @@
 package service.impl;
 
-import enumeration.ProfessorTier;
 import model.Professor;
-import model.Student;
 import repository.ProfessorRepository;
 import service.ProfessorService;
 import util.ApplicationContext;
