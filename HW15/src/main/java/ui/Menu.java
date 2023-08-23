@@ -62,7 +62,7 @@ public class Menu {
     }
 
     public static void professorPanel(User user) {
-        while (true){
+        while (true) {
             System.out.println("1.User Details\n2.Submit score\n3.check paycheck\n4.Exit");
 
             switch (scanner.nextLine()) {
@@ -94,14 +94,14 @@ public class Menu {
 
     //PROFESSOR
 
-    public static void professorUserDetails(User user){
+    public static void professorUserDetails(User user) {
 
         Professor professor = ApplicationContext.professorService.findByUsername(user.getUsername());
         System.out.println(professor);
     }
 
 
-    public static void professorSubmitScore(User user){
+    public static void professorSubmitScore(User user) {
 
         Professor professor = ApplicationContext.professorService.findByUsername(user.getUsername());
 
@@ -114,7 +114,7 @@ public class Menu {
             return;
         }
 
-        if (!ApplicationContext.courseStudentService.professorOwnsCourseStudent(professor,courseStudentId)){
+        if (!ApplicationContext.courseStudentService.professorOwnsCourseStudent(professor, courseStudentId)) {
             System.out.println("You dont own this course!");
             return;
         }
@@ -123,21 +123,21 @@ public class Menu {
         float score;
         try {
             score = Float.parseFloat(scanner.nextLine());
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return;
         }
 
-        if(ApplicationContext.courseStudentService.validScore(score)){
+        if (ApplicationContext.courseStudentService.validScore(score)) {
             CourseStudent courseStudent = ApplicationContext.courseStudentService.findById(courseStudentId);
             courseStudent.setScore(score);
             ApplicationContext.courseStudentService.update(courseStudent);
-        }else {
+        } else {
             System.out.println("not a valid score");
         }
     }
 
-    public static void professorCheckPaycheck(User user){
+    public static void professorCheckPaycheck(User user) {
 
         Professor professor = ApplicationContext.professorService.findByUsername(user.getUsername());
 
@@ -150,7 +150,7 @@ public class Menu {
             return;
         }
 
-        List<Course> courses = ApplicationContext.courseService.findByProfessorAndTerm(professor,term);
+        List<Course> courses = ApplicationContext.courseService.findByProfessorAndTerm(professor, term);
 
         System.out.println(professor + " " + courses + " final salary" + professor.calculateSalary(term));
     }
@@ -232,14 +232,14 @@ public class Menu {
         }
     }
 
-    public static void studentCheckScores(User user){
+    public static void studentCheckScores(User user) {
 
         Student student = ApplicationContext.studentService.findByUsername(user.getUsername());
 
         System.out.println(ApplicationContext.courseStudentService.findCourseByStudent(student));
     }
 
-    public static void studentRemoveCourse(User user){
+    public static void studentRemoveCourse(User user) {
         Student student = ApplicationContext.studentService.findByUsername(user.getUsername());
 
         System.out.println("course_student id to remove");
@@ -251,10 +251,10 @@ public class Menu {
             return;
         }
 
-        if (ApplicationContext.courseStudentService.studentOwnsCourse(student,courseStudentId)){
+        if (ApplicationContext.courseStudentService.studentOwnsCourse(student, courseStudentId)) {
             ApplicationContext.courseStudentService.delete(ApplicationContext.courseStudentService.findById(courseStudentId));
             System.out.println("course deleted");
-        }else
+        } else
             System.out.println("You dont own this course_student id");
     }
 
@@ -451,24 +451,25 @@ public class Menu {
             return;
         }
 
+        User user = new User();
+        user.setPassword(password);
+        user.setUsername(username);
+        user.setRole(Role.EMPLOYEE);
+
         Employee employee = new Employee();
         employee.setUsername(username);
         employee.setFirstname(firstname);
         employee.setLastname(lastname);
         employee.setSalary(salary);
+        employee.setUser(user);
 
-
-        User user = ApplicationContext.userService.singUp(username, password, Role.EMPLOYEE);
-        if (user != null) {
-            employee = ApplicationContext.employeeService.signup(employee);
-            if (employee != null)
-                System.out.println("employee with " + employee.getId() + "employee id was created\nUser with " + user.getId() + "user id was created");
-            else {
-                ApplicationContext.userService.remove(user);
-                System.out.println("Failed to add the student");
-            }
-        } else
+        employee = ApplicationContext.employeeService.signup(employee);
+        if (employee != null)
+            System.out.println("employee with " + employee.getId() + "employee id was created\nUser with " + user.getId() + "user id was created");
+        else {
+            ApplicationContext.userService.remove(user);
             System.out.println("Failed to add the student");
+        }
     }
 
     public static void removeEmployee() {
