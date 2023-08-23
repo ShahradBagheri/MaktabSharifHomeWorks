@@ -43,7 +43,7 @@ public class StudentRepositoryImpl implements StudentRepository {
 
     @Override
     public Student findByUsername(String username) {
-        String hql = "SELECT s FROM Student s WHERE s.username = :username";
+        String hql = "SELECT s FROM Student s WHERE s.user.username = :username";
         TypedQuery<Student> typedQuery = entityManager.createQuery(hql, Student.class);
         typedQuery.setParameter("username",username);
         return typedQuery.getSingleResult();

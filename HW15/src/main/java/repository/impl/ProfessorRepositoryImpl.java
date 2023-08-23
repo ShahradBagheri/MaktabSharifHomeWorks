@@ -36,7 +36,7 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
 
     @Override
     public Professor findByUsername(String username) {
-        String hql = "SELECT p FROM Professor p WHERE p.username = :username";
+        String hql = "SELECT p FROM Professor p WHERE p.user.username = :username";
         TypedQuery<Professor> typedQuery = entityManager.createQuery(hql, Professor.class);
         typedQuery.setParameter("username",username);
         return typedQuery.getSingleResult();

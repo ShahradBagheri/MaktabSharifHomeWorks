@@ -36,7 +36,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public Employee findByUsername(String username) {
-        String hql = "SELECT e FROM Employee e WHERE e.username = :username";
+        String hql = "SELECT e FROM Employee e WHERE e.user.username = :username";
         TypedQuery<Employee> typedQuery = entityManager.createQuery(hql, Employee.class);
         typedQuery.setParameter("username",username);
         return typedQuery.getSingleResult();
