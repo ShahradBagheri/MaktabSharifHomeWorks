@@ -17,13 +17,7 @@ public class ProfessorServiceImpl implements ProfessorService {
     ProfessorRepository professorRepository = ApplicationContext.professorRepository;
 
     @Override
-    public Professor signup(String username, String firstname, String lastname, ProfessorTier professorTier, Double baseSalary) {
-        Professor professor = new Professor();
-        professor.setUsername(username);
-        professor.setFirstname(firstname);
-        professor.setLastname(lastname);
-        professor.setProfessorTier(professorTier);
-        professor.setBaseSalary(baseSalary);
+    public Professor signup(Professor professor) {
 
         EntityTransaction transaction = entityManager.getTransaction();
         try {

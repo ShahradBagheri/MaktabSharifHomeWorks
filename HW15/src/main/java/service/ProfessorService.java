@@ -6,7 +6,7 @@ import model.Student;
 
 public interface ProfessorService {
 
-    Professor signup(String username, String firstname, String lastname, ProfessorTier professorTier, Double baseSalary);
+    Professor signup(Professor professor);
 
     void remove(Professor professor);
 
