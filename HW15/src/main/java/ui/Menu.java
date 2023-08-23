@@ -464,7 +464,7 @@ public class Menu {
 
         employee = ApplicationContext.employeeService.signup(employee);
         if (employee != null)
-            System.out.println("employee with " + employee.getId() + "employee id was created\nUser with " + user.getId() + "user id was created");
+            System.out.println("employee with id of " + employee.getId() + " was created\nUser with if of " + user.getId() + " was created");
         else {
             System.out.println("Failed to add the student");
         }
@@ -501,7 +501,7 @@ public class Menu {
             return;
         }
 
-        if (ApplicationContext.employeeService.existsById(id)) {
+        if (!ApplicationContext.employeeService.existsById(id)) {
             System.out.println("Employee with that id doesnt exist");
             return;
         }
