@@ -716,8 +716,16 @@ public class Menu {
         System.out.println("Student lastname");
         String lastname = scanner.nextLine();
 
+        System.out.println("Student username");
+        String username = scanner.nextLine();
+
+        System.out.println("Student password");
+        String password = scanner.nextLine();
+
         student.setFirstname(firstname);
         student.setLastname(lastname);
+        student.getUser().setUsername(username);
+        student.getUser().setPassword(password);
 
         ApplicationContext.studentService.update(student);
     }
