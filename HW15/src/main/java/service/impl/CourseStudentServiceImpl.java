@@ -119,9 +119,6 @@ public class CourseStudentServiceImpl implements CourseStudentService {
             return false;
         }
 
-//        if (courseStudents == null || courseStudents.contains(null))
-//            return false;
-
         double avg = courseStudents.stream()
                 .map(CourseStudent::getScore)
                 .mapToDouble(Float::doubleValue)
