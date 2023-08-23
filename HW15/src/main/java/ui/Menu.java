@@ -489,7 +489,6 @@ public class Menu {
             return;
         }
         ApplicationContext.employeeService.remove(employee);
-        ApplicationContext.userService.remove(ApplicationContext.userService.findByUsername(employee.getUsername()));
     }
 
     public static void updateEmployee() {
@@ -526,9 +525,17 @@ public class Menu {
             return;
         }
 
+        System.out.println("Employee username");
+        String username = scanner.nextLine();
+
+        System.out.println("Employee password");
+        String password = scanner.nextLine();
+
         employee.setFirstname(firstname);
         employee.setLastname(lastname);
         employee.setSalary(salary);
+        employee.getUser().setUsername(username);
+        employee.getUser().setPassword(password);
 
         ApplicationContext.employeeService.update(employee);
     }
