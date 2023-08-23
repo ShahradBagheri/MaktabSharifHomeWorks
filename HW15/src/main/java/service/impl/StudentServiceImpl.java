@@ -16,12 +16,7 @@ public class StudentServiceImpl implements StudentService {
     StudentRepository studentRepository = new StudentRepositoryImpl();
 
     @Override
-    public Student signup(String username, String firstname, String lastname) {
-        Student student = new Student();
-        student.setUsername(username);
-        student.setFirstname(firstname);
-        student.setLastname(lastname);
-
+    public Student signup(Student student) {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();

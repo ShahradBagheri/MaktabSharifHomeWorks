@@ -4,7 +4,7 @@ import model.Student;
 
 public interface StudentService {
 
-    Student signup(String username,String firstname,String lastname);
+    Student signup(Student student);
 
     void remove(Student student);
 
