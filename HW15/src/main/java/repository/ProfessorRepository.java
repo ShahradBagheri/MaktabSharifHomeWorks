@@ -2,8 +2,6 @@ package repository;
 
 import model.Professor;
 
-import java.util.List;
-
 public interface ProfessorRepository {
     Professor create(Professor professor);
 

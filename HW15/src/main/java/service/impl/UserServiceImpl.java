@@ -1,6 +1,5 @@
 package service.impl;
 
-import enumeration.Role;
 import model.User;
 import repository.UserRepository;
 import service.UserService;
