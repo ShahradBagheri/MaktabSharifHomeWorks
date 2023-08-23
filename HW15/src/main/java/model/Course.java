@@ -3,12 +3,12 @@ package model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
 public class Course {
 
@@ -17,19 +17,26 @@ public class Course {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "student_id")
-    private Student student;
-
-    @ManyToOne
     @JoinColumn(name = "professor_id")
     private Professor professor;
 
-    @Column(name = "term")
-    private String term;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "score")
-    private Float score;
+    @Column(name = "term")
+    private Long term;
 
     @Column(name = "units")
     private int units;
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", professor=" + professor.getUsername() +
+                ", name='" + name + '\'' +
+                ", term=" + term +
+                ", units=" + units +
+                '}';
+    }
 }

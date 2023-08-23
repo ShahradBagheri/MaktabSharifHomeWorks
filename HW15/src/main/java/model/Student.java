@@ -12,11 +12,18 @@ import java.util.Set;
 @ToString
 @Table(name = "student")
 @Entity
-public class Student extends BaseUser {
+public class Student{
 
-    @Column(name = "student_university_id")
-    private String studentId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST}, mappedBy = "student")
-    private Set<Course> courseSet;
+    @Column(name = "username", unique = true)
+    private String username;
+
+    @Column(name = "firstname")
+    private String firstname;
+
+    @Column(name = "lastname")
+    private String lastname;
 }
