@@ -751,16 +751,22 @@ public class Menu {
         System.out.println("Student lastname");
         String lastname = scanner.nextLine();
 
-        User user = ApplicationContext.userService.singUp(username, password, Role.STUDENT);
-        if (user != null) {
-            Student student = ApplicationContext.studentService.signup(username, firstname, lastname);
-            if (student != null)
-                System.out.println("Student with " + student.getId() + "student id was created\nUser with " + user.getId() + "user id was created");
-            else {
-                ApplicationContext.userService.remove(user);
-                System.out.println("Failed to add the student");
-            }
-        } else
+        User user = new User();
+        user.setPassword(password);
+        user.setUsername(username);
+        user.setRole(Role.STUDENT);
+
+        Student student = new Student();
+        student.setFirstname(firstname);
+        student.setLastname(lastname);
+        student.setUser(user);
+
+        student = ApplicationContext.studentService.signup(student);
+        if (student != null)
+            System.out.println("Student with " + student.getId() + "student id was created\nUser with " + user.getId() + "user id was created");
+        else {
+            ApplicationContext.userService.remove(user);
             System.out.println("Failed to add the student");
+        }
     }
 }
