@@ -114,7 +114,7 @@ public class Menu {
             return;
         }
 
-        if (!ApplicationContext.courseStudentService.courseStudentExistsById(courseStudentId)){
+        if (!ApplicationContext.courseStudentService.courseStudentExistsById(courseStudentId)) {
             System.out.println("This courseStudent doesnt exist");
             return;
         }
@@ -223,9 +223,9 @@ public class Menu {
         else if (ApplicationContext.courseStudentService.hasPassedCourse(course, student))
             System.out.println("you have already passed this course");
         else if (has24Limit) {
-            if (currentUnits + course.getUnits() > 24) {
+            if (currentUnits + course.getUnits() > 24)
                 System.out.println("You're over your unit limit");
-            }else {
+            else {
                 CourseStudent courseStudent = ApplicationContext.courseStudentService.studentChoosing(student, course);
                 if (courseStudent != null)
                     System.out.println("CourseStudent with the id of " + courseStudent.getId() + " was added");
@@ -262,7 +262,7 @@ public class Menu {
             return;
         }
 
-        if(!ApplicationContext.courseStudentService.courseStudentExistsById(courseStudentId)){
+        if (!ApplicationContext.courseStudentService.courseStudentExistsById(courseStudentId)) {
             System.out.println("courseStudent doesnt exist");
             return;
         }
@@ -318,7 +318,7 @@ public class Menu {
 
     public static void employeeUserDetails(User user) {
         Employee employee = ApplicationContext.employeeService.findByUsername(user.getUsername());
-        if(employee == null){
+        if (employee == null) {
             System.out.println("cant get details with an admin account");
             return;
         }
