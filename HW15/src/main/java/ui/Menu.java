@@ -501,12 +501,12 @@ public class Menu {
             return;
         }
 
-        Employee employee = ApplicationContext.employeeService.findById(id);
-
-        if (employee == null) {
+        if (ApplicationContext.professorService.existsById(id)) {
             System.out.println("Employee with that id doesnt exist");
             return;
         }
+
+        Employee employee = ApplicationContext.employeeService.findById(id);
 
         System.out.println("Employee firstname");
         String firstname = scanner.nextLine();
@@ -593,7 +593,7 @@ public class Menu {
 
         professor = ApplicationContext.professorService.signup(professor);
         if (professor != null)
-            System.out.println("professor with " + professor.getId() + "professor id was created\nUser with " + user.getId() + "user id was created");
+            System.out.println("professor with id of " + professor.getId() + " was created\nUser with id of " + user.getId() + " was created");
         else {
             System.out.println("Failed to add the professor");
         }
@@ -630,13 +630,13 @@ public class Menu {
             return;
         }
 
-
-        Professor professor = ApplicationContext.professorService.findById(id);
-
-        if (professor == null) {
+        if (!ApplicationContext.professorService.existsById(id)) {
             System.out.println("professor with that id doesnt exist");
             return;
         }
+
+        Professor professor = ApplicationContext.professorService.findById(id);
+
 
         System.out.println("professor firstname");
         String firstname = scanner.nextLine();
@@ -700,12 +700,13 @@ public class Menu {
             return;
         }
 
-        Student student = ApplicationContext.studentService.findById(id);
-
-        if (student == null) {
+        if (!ApplicationContext.studentService.existsById(id)) {
             System.out.println("Student with that id doesnt exist");
             return;
         }
+
+        Student student = ApplicationContext.studentService.findById(id);
+
 
         System.out.println("Student firstname");
         String firstname = scanner.nextLine();
@@ -772,7 +773,7 @@ public class Menu {
 
         student = ApplicationContext.studentService.signup(student);
         if (student != null)
-            System.out.println("Student with " + student.getId() + "student id was created\nUser with " + user.getId() + "user id was created");
+            System.out.println("Student with id of " + student.getId() + " was created\nUser with id of " + user.getId() + " was created");
         else {
             System.out.println("Failed to add the student");
         }

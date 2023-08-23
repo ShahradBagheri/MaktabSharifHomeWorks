@@ -85,4 +85,20 @@ public class ProfessorServiceImpl implements ProfessorService {
             return null;
         }
     }
+
+    @Override
+    public boolean existsById(Long id) {
+        EntityTransaction transaction = entityManager.getTransaction();
+        Professor professor;
+        try {
+            transaction.begin();
+            professor = professorRepository.findById(id);
+            transaction.commit();
+        } catch (Exception e){
+            transaction.rollback();
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return professor != null;
+    }
 }

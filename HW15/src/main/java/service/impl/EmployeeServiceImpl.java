@@ -87,5 +87,21 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         return null;
     }
+
+    @Override
+    public boolean existsById(Long id) {
+        EntityTransaction transaction = entityManager.getTransaction();
+        Employee employee;
+        try {
+            transaction.begin();
+            employee = employeeRepository.findById(id);
+            transaction.commit();
+        } catch (Exception e){
+            transaction.rollback();
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return employee != null;
+    }
 }
 

@@ -13,4 +13,6 @@ public interface EmployeeService {
     Employee findById(long id);
 
     Employee findByUsername(String username);
+
+    boolean existsById(Long id);
 }

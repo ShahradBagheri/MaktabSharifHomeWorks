@@ -13,4 +13,6 @@ public interface StudentService {
     void update(Student student);
 
     Student findByUsername(String username);
+
+    boolean existsById(Long id);
 }

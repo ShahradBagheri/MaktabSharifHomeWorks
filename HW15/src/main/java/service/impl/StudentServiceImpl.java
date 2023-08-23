@@ -83,4 +83,20 @@ public class StudentServiceImpl implements StudentService {
         }
         return null;
     }
+
+    @Override
+    public boolean existsById(Long id) {
+        EntityTransaction transaction = entityManager.getTransaction();
+        Student student;
+        try {
+            transaction.begin();
+            student = studentRepository.findById(id);
+            transaction.commit();
+        } catch (Exception e){
+            transaction.rollback();
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return student != null;
+    }
 }
