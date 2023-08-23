@@ -196,7 +196,7 @@ public class CourseStudentServiceImpl implements CourseStudentService {
 
     @Override
     public boolean hasPassedCourse(Course course, Student student) {
-//todo
+
         EntityTransaction transaction = entityManager.getTransaction();
         List<CourseStudent> courseStudents;
 
