@@ -15,7 +15,7 @@ import java.util.Set;
 public class Student{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "username", unique = true)
@@ -26,4 +26,8 @@ public class Student{
 
     @Column(name = "lastname")
     private String lastname;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 }

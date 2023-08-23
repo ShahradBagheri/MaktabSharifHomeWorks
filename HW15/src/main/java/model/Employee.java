@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Employee{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "username", unique = true)
@@ -28,6 +28,10 @@ public class Employee{
 
     @Column(name = "salary")
     private Double salary;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public String details(){
         return salary + " " + firstname + " " + lastname;

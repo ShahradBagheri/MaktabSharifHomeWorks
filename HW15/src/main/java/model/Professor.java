@@ -16,7 +16,7 @@ import java.util.Set;
 public class Professor{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "username", unique = true)
@@ -36,6 +36,10 @@ public class Professor{
 
     @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST}, mappedBy = "professor")
     private Set<Course> courseSet;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public double calculateSalary(Long  term){
 
