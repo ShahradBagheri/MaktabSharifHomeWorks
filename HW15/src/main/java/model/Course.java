@@ -33,7 +33,7 @@ public class Course {
     public String toString() {
         return "Course{" +
                 "id=" + id +
-                ", professor=" + professor.getUsername() +
+                ", professor=" + professor.getFirstname() +
                 ", name='" + name + '\'' +
                 ", term=" + term +
                 ", units=" + units +

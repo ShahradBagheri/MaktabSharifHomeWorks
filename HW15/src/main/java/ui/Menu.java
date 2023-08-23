@@ -581,18 +581,25 @@ public class Menu {
             }
         }
 
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setRole(Role.PROFESSOR);
 
-        User user = ApplicationContext.userService.singUp(username, password, Role.PROFESSOR);
-        if (user != null) {
-            Professor professor = ApplicationContext.professorService.signup(username, firstname, lastname, professorTier, baseSalary);
-            if (professor != null)
-                System.out.println("professor with " + professor.getId() + "professor id was created\nUser with " + user.getId() + "user id was created");
-            else {
-                ApplicationContext.userService.remove(user);
-                System.out.println("Failed to add the professor");
-            }
-        } else
+        Professor professor = new Professor();
+        professor.setFirstname(firstname);
+        professor.setLastname(lastname);
+        professor.setProfessorTier(professorTier);
+        professor.setBaseSalary(baseSalary);
+        professor.setUser(user);
+
+        professor = ApplicationContext.professorService.signup(professor);
+        if (professor != null)
+            System.out.println("professor with " + professor.getId() + "professor id was created\nUser with " + user.getId() + "user id was created");
+        else {
+            ApplicationContext.userService.remove(user);
             System.out.println("Failed to add the professor");
+        }
     }
 
     public static void removeProfessor() {
@@ -612,8 +619,6 @@ public class Menu {
             return;
         }
         ApplicationContext.professorService.remove(professor);
-        ApplicationContext.userService.remove(ApplicationContext.userService.findByUsername(professor.getUsername()));
-
     }
 
     public static void updateProfessor() {
@@ -670,10 +675,18 @@ public class Menu {
             }
         }
 
+        System.out.println("Professor Username");
+        String username = scanner.nextLine();
+
+        System.out.println("Professor Password");
+        String password = scanner.nextLine();
+
         professor.setFirstname(firstname);
         professor.setLastname(lastname);
         professor.setProfessorTier(professorTier);
         professor.setBaseSalary(baseSalary);
+        professor.getUser().setUsername(username);
+        professor.getUser().setPassword(password);
 
         ApplicationContext.professorService.update(professor);
     }
@@ -720,7 +733,6 @@ public class Menu {
                 return;
             }
             ApplicationContext.studentService.remove(student);
-            ApplicationContext.userService.remove(ApplicationContext.userService.findByUsername(student.getUsername()));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
