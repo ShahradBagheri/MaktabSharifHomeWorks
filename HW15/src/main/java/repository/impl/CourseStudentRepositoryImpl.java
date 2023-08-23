@@ -55,10 +55,12 @@ public class CourseStudentRepositoryImpl implements CourseStudentRepository {
     @Override
     public int currentUnitsAmountStudent(Long term, Student student) {
         String jpql = "SELECT sum(c.course.units) FROM CourseStudent c WHERE c.student = :student AND c.course.term = :currentTerm";
-        TypedQuery<Integer> typedQuery = entityManager.createQuery(jpql,Integer.class);
+        TypedQuery<Long> typedQuery = entityManager.createQuery(jpql,Long.class);
         typedQuery.setParameter("student",student);
         typedQuery.setParameter("currentTerm",term);
-        return typedQuery.getSingleResult();
+        if (typedQuery.getSingleResult() == null)
+            return 0;
+        return typedQuery.getSingleResult().intValue();
     }
 
 }

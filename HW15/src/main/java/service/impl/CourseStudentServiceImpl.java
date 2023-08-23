@@ -210,19 +210,14 @@ public class CourseStudentServiceImpl implements CourseStudentService {
             return false;
         }
 
-        if (courseStudents.stream()
+        List<Float> scores = courseStudents.stream()
                 .filter(courseStudent -> Objects.equals(courseStudent.getCourse().getName(), course.getName()))
                 .map(CourseStudent::getScore)
-                .toList()
-                .contains(null))
-            return false;
-
-        List<String> courses = courseStudents.stream()
-                .filter(courseStudent -> courseStudent.getScore() >= 10)
-                .map(courseStudent -> courseStudent.getCourse().getName())
                 .toList();
 
-        return courses.contains(course.getName());
+        if (scores.contains(null))
+            return false;
+        return (!scores.stream().filter(score -> score >= 10).toList().isEmpty());
     }
 
     @Override
@@ -263,5 +258,22 @@ public class CourseStudentServiceImpl implements CourseStudentService {
     @Override
     public boolean validScore(float score) {
         return score >= 0 && score <= 20;
+    }
+
+    @Override
+    public boolean courseStudentExistsById(Long id) {
+        EntityTransaction transaction = entityManager.getTransaction();
+        CourseStudent courseStudent;
+
+        try {
+            transaction.begin();
+            courseStudent = courseStudentRepository.findById(id);
+            transaction.commit();
+        } catch (Exception e) {
+            transaction.rollback();
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return courseStudent != null;
     }
 }

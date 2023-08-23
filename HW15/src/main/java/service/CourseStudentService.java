@@ -33,4 +33,6 @@ public interface CourseStudentService {
     boolean professorOwnsCourseStudent(Professor professor,Long courseStudentId);
 
     boolean validScore(float score);
+
+    boolean courseStudentExistsById(Long id);
 }

@@ -194,9 +194,6 @@ public class Menu {
             return;
         }
 
-        boolean has24Limit = ApplicationContext.courseStudentService.isStudentHighAvg(term, student);
-        int currentUnits = ApplicationContext.courseStudentService.currentUnits(term, student);
-
         System.out.println("Select a course by id");
         long courseId;
         try {
@@ -211,6 +208,9 @@ public class Menu {
             return;
         }
 
+        boolean has24Limit = ApplicationContext.courseStudentService.isStudentHighAvg(term, student);
+        int currentUnits = ApplicationContext.courseStudentService.currentUnits(term, student);
+
         Course course = ApplicationContext.courseService.findById(courseId);
 
         if (ApplicationContext.courseStudentService.choseCourseThisTerm(course, student, term))
@@ -220,13 +220,19 @@ public class Menu {
         else if (has24Limit) {
             if (currentUnits + course.getUnits() > 24) {
                 System.out.println("You're over your unit limit");
+            }else {
+                CourseStudent courseStudent = ApplicationContext.courseStudentService.studentChoosing(student, course);
+                if (courseStudent != null)
+                    System.out.println("CourseStudent with the id of " + courseStudent.getId() + " was added");
+                else
+                    System.out.println("failed to add course");
             }
         } else if (currentUnits + course.getUnits() > 20)
             System.out.println("You're over your unit limit");
         else {
             CourseStudent courseStudent = ApplicationContext.courseStudentService.studentChoosing(student, course);
             if (courseStudent != null)
-                System.out.println("Course with the id of " + courseStudent.getId() + " was added");
+                System.out.println("CourseStudent with the id of " + courseStudent.getId() + " was added");
             else
                 System.out.println("failed to add course");
         }
@@ -248,6 +254,11 @@ public class Menu {
             courseStudentId = Long.parseLong(scanner.nextLine());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            return;
+        }
+
+        if(!ApplicationContext.courseStudentService.courseStudentExistsById(courseStudentId)){
+            System.out.println("courseStudent doesnt exist");
             return;
         }
 
@@ -302,6 +313,10 @@ public class Menu {
 
     public static void employeeUserDetails(User user) {
         Employee employee = ApplicationContext.employeeService.findByUsername(user.getUsername());
+        if(employee == null){
+            System.out.println("cant get details with an admin account");
+            return;
+        }
         System.out.println(employee.details());
     }
 
