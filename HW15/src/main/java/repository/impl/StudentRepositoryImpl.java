@@ -6,7 +6,6 @@ import util.EntityManagerSingleton;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import java.util.List;
 
 public class StudentRepositoryImpl implements StudentRepository {
 
@@ -34,12 +33,6 @@ public class StudentRepositoryImpl implements StudentRepository {
         return entityManager.find(Student.class,id);
     }
 
-    @Override
-    public List<Student> findAll() {
-        String hql = "SELECT s FROM Student s";
-        TypedQuery<Student> typedQuery = entityManager.createQuery(hql, Student.class);
-        return typedQuery.getResultList();
-    }
 
     @Override
     public Student findByUsername(String username) {

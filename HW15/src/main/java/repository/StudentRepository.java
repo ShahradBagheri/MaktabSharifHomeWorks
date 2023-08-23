@@ -2,8 +2,6 @@ package repository;
 
 import model.Student;
 
-import java.util.List;
-
 public interface StudentRepository {
     Student create(Student student);
 
@@ -12,8 +10,6 @@ public interface StudentRepository {
     void delete(Student student);
 
     Student findById(Long id);
-
-    List<Student> findAll();
 
     Student findByUsername(String username);
 }

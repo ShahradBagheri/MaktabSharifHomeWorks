@@ -15,5 +15,4 @@ public interface ProfessorRepository {
 
     Professor findByUsername(String username);
 
-    List<Professor> findAll();
 }

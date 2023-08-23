@@ -41,11 +41,4 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         typedQuery.setParameter("username",username);
         return typedQuery.getSingleResult();
     }
-
-    @Override
-    public List<Employee> findAll() {
-        String hql = "SELECT e FROM Employee e";
-        TypedQuery<Employee> typedQuery = entityManager.createQuery(hql, Employee.class);
-        return typedQuery.getResultList();
-    }
 }

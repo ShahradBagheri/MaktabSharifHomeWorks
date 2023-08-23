@@ -6,7 +6,6 @@ import util.EntityManagerSingleton;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import java.util.List;
 
 public class ProfessorRepositoryImpl implements ProfessorRepository {
 
@@ -42,10 +41,4 @@ public class ProfessorRepositoryImpl implements ProfessorRepository {
         return typedQuery.getSingleResult();
     }
 
-    @Override
-    public List<Professor> findAll() {
-        String hql = "SELECT p FROM Professor p";
-        TypedQuery<Professor> typedQuery = entityManager.createQuery(hql, Professor.class);
-        return typedQuery.getResultList();
-    }
 }
