@@ -466,7 +466,6 @@ public class Menu {
         if (employee != null)
             System.out.println("employee with " + employee.getId() + "employee id was created\nUser with " + user.getId() + "user id was created");
         else {
-            ApplicationContext.userService.remove(user);
             System.out.println("Failed to add the student");
         }
     }
@@ -596,7 +595,6 @@ public class Menu {
         if (professor != null)
             System.out.println("professor with " + professor.getId() + "professor id was created\nUser with " + user.getId() + "user id was created");
         else {
-            ApplicationContext.userService.remove(user);
             System.out.println("Failed to add the professor");
         }
     }
@@ -776,7 +774,6 @@ public class Menu {
         if (student != null)
             System.out.println("Student with " + student.getId() + "student id was created\nUser with " + user.getId() + "user id was created");
         else {
-            ApplicationContext.userService.remove(user);
             System.out.println("Failed to add the student");
         }
     }
