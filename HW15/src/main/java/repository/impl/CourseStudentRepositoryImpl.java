@@ -42,4 +42,23 @@ public class CourseStudentRepositoryImpl implements CourseStudentRepository {
     public CourseStudent findById(Long id) {
         return entityManager.find(CourseStudent.class, id);
     }
+
+    @Override
+    public List<CourseStudent> findCourseStudentByTermAndStudent(Long term, Student student) {
+        String jpql = "SELECT c FROM CourseStudent c WHERE c.student = :student AND c.course.term = :currentTerm";
+        TypedQuery<CourseStudent> typedQuery = entityManager.createQuery(jpql,CourseStudent.class);
+        typedQuery.setParameter("student",student);
+        typedQuery.setParameter("currentTerm",term);
+        return typedQuery.getResultList();
+    }
+
+    @Override
+    public int currentUnitsAmountStudent(Long term, Student student) {
+        String jpql = "SELECT sum(c.course.units) FROM CourseStudent c WHERE c.student = :student AND c.course.term = :currentTerm";
+        TypedQuery<Integer> typedQuery = entityManager.createQuery(jpql,Integer.class);
+        typedQuery.setParameter("student",student);
+        typedQuery.setParameter("currentTerm",term);
+        return typedQuery.getSingleResult();
+    }
+
 }

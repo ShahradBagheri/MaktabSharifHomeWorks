@@ -16,4 +16,8 @@ public interface CourseStudentRepository {
     List<CourseStudent> findCourseByStudent(Student student);
 
     CourseStudent findById(Long id);
+
+    List<CourseStudent> findCourseStudentByTermAndStudent(Long term,Student student);
+
+    int currentUnitsAmountStudent(Long term,Student student);
 }

@@ -29,7 +29,7 @@ public class CourseStudentServiceImpl implements CourseStudentService {
             courseStudentRepository.create(courseStudent);
             transaction.commit();
             return courseStudent;
-        } catch (Exception e){
+        } catch (Exception e) {
             transaction.rollback();
             System.out.println(e.getMessage());
         }
@@ -46,7 +46,7 @@ public class CourseStudentServiceImpl implements CourseStudentService {
             courseStudentRepository.update(courseStudent);
             transaction.commit();
             return courseStudent;
-        } catch (Exception e){
+        } catch (Exception e) {
             transaction.rollback();
             System.out.println(e.getMessage());
         }
@@ -62,7 +62,7 @@ public class CourseStudentServiceImpl implements CourseStudentService {
             transaction.begin();
             courseStudentRepository.delete(courseStudent);
             transaction.commit();
-        } catch (Exception e){
+        } catch (Exception e) {
             transaction.rollback();
             System.out.println(e.getMessage());
         }
@@ -78,8 +78,8 @@ public class CourseStudentServiceImpl implements CourseStudentService {
             transaction.begin();
             courseStudent = courseStudentRepository.findById(id);
             transaction.commit();
-            return  courseStudent;
-        } catch (Exception e){
+            return courseStudent;
+        } catch (Exception e) {
             transaction.rollback();
             System.out.println(e.getMessage());
             return null;
@@ -96,7 +96,7 @@ public class CourseStudentServiceImpl implements CourseStudentService {
             List<CourseStudent> courseStudents = courseStudentRepository.findCourseByStudent(student);
             transaction.commit();
             return courseStudents;
-        } catch (Exception e){
+        } catch (Exception e) {
             transaction.rollback();
             System.out.println(e.getMessage());
             return null;
@@ -104,61 +104,50 @@ public class CourseStudentServiceImpl implements CourseStudentService {
     }
 
     @Override
-    public boolean isStudentHighAvg(Long currentTerm,Student student) {
+    public boolean isStudentHighAvg(Long currentTerm, Student student) {
 
         EntityTransaction transaction = entityManager.getTransaction();
         List<CourseStudent> courseStudents;
 
         try {
             transaction.begin();
-            courseStudents = courseStudentRepository.findCourseByStudent(student);
+            courseStudents = courseStudentRepository.findCourseStudentByTermAndStudent(currentTerm - 1, student);
             transaction.commit();
-        } catch (Exception e){
+        } catch (Exception e) {
             transaction.rollback();
             System.out.println(e.getMessage());
             return false;
         }
 
-        if (courseStudents == null)
-            return false;
+//        if (courseStudents == null || courseStudents.contains(null))
+//            return false;
 
-        List<Float> scores = courseStudents.stream()
-                .filter(courseStudent -> courseStudent.getCourse()
-                .getTerm() == currentTerm-1)
+        double avg = courseStudents.stream()
                 .map(CourseStudent::getScore)
-                .toList();
+                .mapToDouble(Float::doubleValue)
+                .average()
+                .orElse(0.0);
 
-        if (scores.contains(null))
-            return false;
-        else {
-            double avg = scores.stream()
-            .mapToDouble(Float::doubleValue)
-            .average()
-            .orElse(0.0);
-            return avg >= 18;
-        }
+        return avg >= 18;
+
     }
 
     @Override
     public int currentUnits(Long term, Student student) {
 
         EntityTransaction transaction = entityManager.getTransaction();
-        List<CourseStudent> courseStudents;
+        int units;
 
         try {
             transaction.begin();
-            courseStudents = courseStudentRepository.findCourseByStudent(student);
+            units = courseStudentRepository.currentUnitsAmountStudent(term,student);
             transaction.commit();
-        } catch (Exception e){
+            return units;
+        } catch (Exception e) {
             transaction.rollback();
             System.out.println(e.getMessage());
             return -1;
         }
-        return courseStudents.stream()
-                .filter(courseStudent -> Objects.equals(courseStudent.getCourse().getTerm(), term))
-                .map(courseStudent -> courseStudent.getCourse().getUnits())
-                .mapToInt(Integer::intValue)
-                .sum();
     }
 
     @Override
@@ -175,7 +164,7 @@ public class CourseStudentServiceImpl implements CourseStudentService {
             courseStudentRepository.create(courseStudent);
             transaction.commit();
             return courseStudent;
-        } catch (Exception e){
+        } catch (Exception e) {
             transaction.rollback();
             System.out.println(e.getMessage());
         }
@@ -190,16 +179,15 @@ public class CourseStudentServiceImpl implements CourseStudentService {
 
         try {
             transaction.begin();
-            courseStudents = courseStudentRepository.findCourseByStudent(student);
+            courseStudents = courseStudentRepository.findCourseStudentByTermAndStudent(term,student);
             transaction.commit();
-        } catch (Exception e){
+        } catch (Exception e) {
             transaction.rollback();
             System.out.println(e.getMessage());
             return false;
         }
 
         List<String> courses = courseStudents.stream()
-                .filter(courseStudent -> Objects.equals(courseStudent.getCourse().getTerm(), term))
                 .map(courseStudent -> courseStudent.getCourse().getName())
                 .toList();
 
@@ -208,7 +196,7 @@ public class CourseStudentServiceImpl implements CourseStudentService {
 
     @Override
     public boolean hasPassedCourse(Course course, Student student) {
-
+//todo
         EntityTransaction transaction = entityManager.getTransaction();
         List<CourseStudent> courseStudents;
 
@@ -216,13 +204,14 @@ public class CourseStudentServiceImpl implements CourseStudentService {
             transaction.begin();
             courseStudents = courseStudentRepository.findCourseByStudent(student);
             transaction.commit();
-        } catch (Exception e){
+        } catch (Exception e) {
             transaction.rollback();
             System.out.println(e.getMessage());
             return false;
         }
 
         if (courseStudents.stream()
+                .filter(courseStudent -> Objects.equals(courseStudent.getCourse().getName(), course.getName()))
                 .map(CourseStudent::getScore)
                 .toList()
                 .contains(null))
@@ -245,7 +234,7 @@ public class CourseStudentServiceImpl implements CourseStudentService {
             transaction.begin();
             courseStudent = courseStudentRepository.findById(courseStudentId);
             transaction.commit();
-        } catch (Exception e){
+        } catch (Exception e) {
             transaction.rollback();
             System.out.println(e.getMessage());
             return false;
@@ -263,7 +252,7 @@ public class CourseStudentServiceImpl implements CourseStudentService {
             transaction.begin();
             courseStudent = courseStudentRepository.findById(courseStudentId);
             transaction.commit();
-        } catch (Exception e){
+        } catch (Exception e) {
             transaction.rollback();
             System.out.println(e.getMessage());
             return false;
