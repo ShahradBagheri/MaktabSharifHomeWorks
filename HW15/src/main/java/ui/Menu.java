@@ -724,18 +724,22 @@ public class Menu {
 
     public static void removeStudent() {
         System.out.println("Student id");
+        long studentId;
         try {
-            Long studentId = Long.parseLong(scanner.nextLine());
-            Student student = ApplicationContext.studentService.findById(studentId);
-
-            if (student == null) {
-                System.out.println("Student with that id doesnt exist");
-                return;
-            }
-            ApplicationContext.studentService.remove(student);
+            studentId = Long.parseLong(scanner.nextLine());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            return;
         }
+
+        Student student = ApplicationContext.studentService.findById(studentId);
+
+        if (student == null) {
+            System.out.println("Student with that id doesnt exist");
+            return;
+        }
+        ApplicationContext.studentService.remove(student);
+
     }
 
     public static void signUpStudent() {
