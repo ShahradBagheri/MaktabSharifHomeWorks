@@ -30,7 +30,7 @@ public class Menu {
                     User user = ApplicationContext.userService.signIn(username, password);
 
                     if (user == null)
-                        System.out.println("Wrong username or password \n Please try again");
+                        System.out.println("Wrong username or password \nPlease try again");
                     else {
                         switch (user.getRole()) {
                             case STUDENT -> studentPanel(user);
