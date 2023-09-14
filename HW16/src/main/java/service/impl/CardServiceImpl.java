@@ -20,10 +20,11 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public boolean correctCard(Student student, Card card) {
+        System.out.println(card);
+        System.out.println(student.getCard());
         return student.getCard().getCardNumber().equals(card.getCardNumber())
-                && student.getCard().getStudent() == student
                 && student.getCard().getCvv2().equals(card.getCvv2())
                 && student.getCard().getBankName().equals(card.getBankName())
-                && student.getCard().getExpirationDate() == card.getExpirationDate();
+                && student.getCard().getExpirationDate().equals(card.getExpirationDate());
     }
 }
