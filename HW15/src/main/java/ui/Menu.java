@@ -92,7 +92,7 @@ public class Menu {
         }
     }
 
-    //PROFESSOR
+    //region PROFESSOR
 
     public static void professorUserDetails(User user) {
 
@@ -273,6 +273,8 @@ public class Menu {
         } else
             System.out.println("You dont own this course_student id");
     }
+
+    //endregion
 
     //Employee methods
 
