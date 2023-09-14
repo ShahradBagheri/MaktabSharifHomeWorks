@@ -3,12 +3,10 @@ package model;
 import enumeration.Degree;
 import enumeration.UniversityType;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 @Getter
 @Setter

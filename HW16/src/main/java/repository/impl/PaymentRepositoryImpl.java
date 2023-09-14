@@ -1,6 +1,5 @@
 package repository.impl;
 
-import model.Loan;
 import model.Payment;
 import model.Student;
 import repository.PaymentRepository;
