@@ -154,6 +154,8 @@ public class GetLoanPanel {
                         spouse = ApplicationContext.studentService.login(governmentId,password);
                         if(spouse == null){
                             System.out.println("wrong password or government id\nCouldn't add spouse to your account");
+                        }else {
+                            choosingSpouse = false;
                         }
                     }
                     case "No" -> choosingSpouse = false;
@@ -164,6 +166,10 @@ public class GetLoanPanel {
             }
             student.setSpouse(spouse);
             student = ApplicationContext.studentService.update(student);
+            if(spouse != null){
+                spouse.setSpouse(student);
+                ApplicationContext.studentService.update(spouse);
+            }
         }
 
         if(ApplicationContext.loanService.livesInBigCIty(student) && student.getSpouse() == null){
