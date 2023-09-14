@@ -12,8 +12,6 @@ public interface LoanService {
 
     Loan update(Loan loan);
 
-    void delete(Loan loan);
-
     Loan findById(Long id);
 
     List<Loan> findByStudent(Student student);

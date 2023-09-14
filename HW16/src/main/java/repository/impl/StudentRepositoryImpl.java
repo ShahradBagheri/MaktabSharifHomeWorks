@@ -24,11 +24,6 @@ public class StudentRepositoryImpl implements StudentRepository {
     }
 
     @Override
-    public void delete(Student student) {
-        entityManager.remove(student);
-    }
-
-    @Override
     public Student findById(Long id) {
         return entityManager.find(Student.class, id);
     }

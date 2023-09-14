@@ -8,8 +8,6 @@ public interface StudentRepository {
 
     Student update(Student student);
 
-    void delete(Student student);
-
     Student findById(Long id);
 
     Student findByGovernmentId(String governmentId);
