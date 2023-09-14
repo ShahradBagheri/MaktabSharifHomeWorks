@@ -11,8 +11,6 @@ public interface PaymentRepository {
 
     Payment findById(Long id);
 
-    List<Payment> findByStudent(Student student);
-
     List<Payment> getPaidPayments(Student student);
 
     List<Payment> getUnpaidPayments(Student student);

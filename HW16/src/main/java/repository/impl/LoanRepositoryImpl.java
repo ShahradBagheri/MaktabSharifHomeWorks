@@ -25,10 +25,6 @@ public class LoanRepositoryImpl implements LoanRepository {
         return loan;
     }
 
-    @Override
-    public void delete(Loan loan) {
-        entityManager.remove(loan);
-    }
 
     @Override
     public Loan findById(Long id) {

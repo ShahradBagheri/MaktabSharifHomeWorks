@@ -11,7 +11,6 @@ public interface LoanRepository {
 
     Loan update(Loan loan);
 
-    void delete(Loan loan);
 
     Loan findById(Long id);
 

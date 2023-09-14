@@ -24,13 +24,6 @@ public class PaymentRepositoryImpl implements PaymentRepository {
         return entityManager.find(Payment.class, id);
     }
 
-    @Override
-    public List<Payment> findByStudent(Student student) {
-        String jpql = "SELECT p FROM Payment p WHERE p.loan.student = :student ";
-        TypedQuery<Payment> typedQuery = entityManager.createQuery(jpql,Payment.class);
-        typedQuery.setParameter("student", student);
-        return typedQuery.getResultList();
-    }
 
     @Override
     public List<Payment> getPaidPayments(Student student) {
