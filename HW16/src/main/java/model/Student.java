@@ -64,12 +64,12 @@ public class Student {
     @OneToMany(mappedBy = "student")
     private List<Loan> loan;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     private Card card;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     private RentContract rentContract;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     private Student spouse;
 }

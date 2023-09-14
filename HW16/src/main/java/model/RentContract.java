@@ -22,7 +22,7 @@ public class RentContract {
 
     private String contractNumber;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     private Student student;
 
 }

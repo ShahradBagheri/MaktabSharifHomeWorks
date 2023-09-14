@@ -29,6 +29,6 @@ public class Loan {
     @JoinColumn(name = "student_id")
     private Student student;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "loan")
+    @OneToMany(cascade = {CascadeType.MERGE,CascadeType.PERSIST}, mappedBy = "loan")
     private List<Payment> payments;
 }
