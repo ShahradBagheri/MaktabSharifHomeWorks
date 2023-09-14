@@ -49,22 +49,6 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public List<Payment> findByStudent(Student student) {
-        EntityTransaction entityTransaction = entityManager.getTransaction();
-        try{
-            entityTransaction.begin();
-
-            List<Payment> payments = paymentRepository.findByStudent(student);
-
-            entityTransaction.commit();
-            return payments;
-        }catch (Exception e) {
-            entityTransaction.rollback();
-            return null;
-        }
-    }
-
-    @Override
     public List<Payment> getPaidPayments(Student student) {
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try{
