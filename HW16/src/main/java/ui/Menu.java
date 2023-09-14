@@ -28,6 +28,7 @@ public class Menu {
     }
 
     public static void login(){
+
         System.out.println("government id");
         String governmentId = scanner.nextLine();
 
@@ -41,6 +42,7 @@ public class Menu {
     }
 
     public static void studentPanel(Student student){
+
         while (true){
             System.out.println("1.get loan\n2.payments\n3.Exit");
             switch (scanner.nextLine()){
@@ -64,6 +66,7 @@ public class Menu {
 
 
     public static void signUp(){
+
         System.out.println("firstname");
         String firstname = scanner.nextLine();
 

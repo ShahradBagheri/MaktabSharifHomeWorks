@@ -27,6 +27,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student signUp(Student student) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try {
             entityTransaction.begin();
@@ -43,6 +44,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student update(Student student) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try {
             entityTransaction.begin();
@@ -59,6 +61,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student findById(Long id) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try {
             entityTransaction.begin();
@@ -75,6 +78,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public String generatePassword() {
+
         PasswordGenerator gen = new PasswordGenerator();
         CharacterData lowerCaseChars = EnglishCharacterData.LowerCase;
         CharacterRule lowerCaseRule = new CharacterRule(lowerCaseChars);
@@ -106,6 +110,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student login(String governmentId, String password) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
         Student student = null;
         try {
@@ -125,21 +130,25 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean socialIdValidation(String string) {
+
         return Pattern.matches("[0-9]{10}",string);
     }
 
     @Override
     public boolean governmentIdValidation(String governmentId) {
+
         return Pattern.matches("[0-9]{10}",governmentId);
     }
 
     @Override
     public boolean studentIdValidation(String studentId) {
+
         return Pattern.matches("[0-9]{8}",studentId);
     }
 
     @Override
     public boolean entranceYearValidation(int entranceYear) {
+
         LocalDate localDate = Constant.DATE;
         int year = localDate.getYear();
         return entranceYear <= year;
@@ -147,6 +156,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean socialIdExists(String socialId) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try {
             entityTransaction.begin();
@@ -163,6 +173,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean governmentIdExists(String governmentId) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try {
             entityTransaction.begin();
@@ -179,6 +190,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean studentIdExists(String studentId) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try {
             entityTransaction.begin();
@@ -195,6 +207,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean hasGraduated(Student student) {
+
         switch (student.getDegree()){
             case COLLAGE,MASTERS_NOT_CONNECTED -> {
                 return Constant.DATE.getYear() >= student.getEntranceYear() + 2;

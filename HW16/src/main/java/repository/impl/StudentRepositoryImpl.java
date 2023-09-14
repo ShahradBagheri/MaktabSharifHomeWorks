@@ -25,11 +25,13 @@ public class StudentRepositoryImpl implements StudentRepository {
 
     @Override
     public Student findById(Long id) {
+
         return entityManager.find(Student.class, id);
     }
 
     @Override
     public Student findByGovernmentId(String governmentId) {
+
         String jpql = "SELECT s FROM Student s WHERE s.governmentId = :governmentId";
         TypedQuery<Student> typedQuery = entityManager.createQuery(jpql, Student.class);
         typedQuery.setParameter("governmentId", governmentId);
@@ -38,6 +40,7 @@ public class StudentRepositoryImpl implements StudentRepository {
 
     @Override
     public boolean socialIdExists(String socialId) {
+
         String jpql = "SELECT count(s) FROM Student s WHERE s.socialId = :socialId";
         TypedQuery<Long> typedQuery = entityManager.createQuery(jpql, Long.class);
         typedQuery.setParameter("socialId", socialId);
@@ -46,6 +49,7 @@ public class StudentRepositoryImpl implements StudentRepository {
 
     @Override
     public boolean governmentIdExists(String governmentId) {
+
         String jpql = "SELECT count(s) FROM Student s WHERE s.governmentId = :governmentId";
             TypedQuery<Long> typedQuery = entityManager.createQuery(jpql, Long.class);
         typedQuery.setParameter("governmentId", governmentId);
@@ -54,6 +58,7 @@ public class StudentRepositoryImpl implements StudentRepository {
 
     @Override
     public boolean studentIdExists(String studentId) {
+
         String jpql = "SELECT count(s) FROM Student s WHERE s.studentId = :studentId";
         TypedQuery<Long> typedQuery = entityManager.createQuery(jpql, Long.class);
         typedQuery.setParameter("studentId", studentId);

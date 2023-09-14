@@ -18,6 +18,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public Payment update(Payment payment) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try{
             entityTransaction.begin();
@@ -34,6 +35,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public Payment findById(Long id) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try{
             entityTransaction.begin();
@@ -50,6 +52,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public List<Payment> getPaidPayments(Student student) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try{
             entityTransaction.begin();
@@ -66,6 +69,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public List<Payment> getUnpaidPayments(Student student) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try{
             entityTransaction.begin();
@@ -82,6 +86,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public boolean studentOwnsPayment(Student student, Long id) {
+
         Payment payment = findById(id);
         if(payment != null){
             return payment.getLoan().getStudent() == student;
@@ -91,6 +96,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public boolean isPaid(Long id) {
+
         return findById(id).getIsPaid();
     }
 }

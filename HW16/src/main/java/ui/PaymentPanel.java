@@ -16,6 +16,7 @@ public class PaymentPanel {
     static Scanner scanner = new Scanner(System.in);
 
     public static void payments(Student student){
+
         System.out.println("1.show paid payments\n2.show unpaid payments\n3.pay payment");
         switch (scanner.nextLine()){
             case "1" -> showPaidPayments(student);

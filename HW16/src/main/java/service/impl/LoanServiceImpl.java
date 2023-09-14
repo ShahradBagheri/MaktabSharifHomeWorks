@@ -57,6 +57,7 @@ public class LoanServiceImpl implements LoanService {
 
     @Override
     public Loan update(Loan loan) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try{
             entityTransaction.begin();
@@ -73,6 +74,7 @@ public class LoanServiceImpl implements LoanService {
 
     @Override
     public Loan findById(Long id) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try{
             entityTransaction.begin();
@@ -89,6 +91,7 @@ public class LoanServiceImpl implements LoanService {
 
     @Override
     public List<Loan> findByStudent(Student student) {
+
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try{
             entityTransaction.begin();
@@ -106,6 +109,7 @@ public class LoanServiceImpl implements LoanService {
 
     @Override
     public boolean gotStudyLoanThisSemester(Student student) {
+
         List<Loan> loans = findByStudent(student);
 
         if (loans == null)
@@ -122,6 +126,7 @@ public class LoanServiceImpl implements LoanService {
 
     @Override
     public boolean gotTuitionFeeLoanThisSemester(Student student) {
+
         List<Loan> loans = findByStudent(student);
 
         if (loans == null)
@@ -138,6 +143,7 @@ public class LoanServiceImpl implements LoanService {
 
     @Override
     public boolean gotRentLoan(Student student) {
+
         List<Loan> loans = findByStudent(student);
 
         if (loans == null)
@@ -152,6 +158,7 @@ public class LoanServiceImpl implements LoanService {
 
     @Override
     public boolean canGetTuitionFeeLoan(Student student) {
+
         return student.getUniversityType() == UniversityType.PUBLIC_NIGHT
                 || student.getUniversityType() == UniversityType.PRIVATE
                 || student.getUniversityType() == UniversityType.PARDIS
@@ -162,6 +169,7 @@ public class LoanServiceImpl implements LoanService {
 
     @Override
     public boolean isTimeToGetLoan() {
+
         LocalDate todayDate = Constant.DATE;
         return (!todayDate.isBefore(LocalDate.of(todayDate.getYear(),8,1)) && !todayDate.isAfter(LocalDate.of(todayDate.getYear(),8,8)))
                 || (!todayDate.isBefore(LocalDate.of(todayDate.getYear(),11,25)) && !todayDate.isAfter(LocalDate.of(todayDate.getYear(),12,2)));
@@ -169,17 +177,20 @@ public class LoanServiceImpl implements LoanService {
 
     @Override
     public boolean dateIsThisSemester(LocalDate localDate) {
+
         return (localDate.getYear() == Constant.DATE.getYear() && localDate.getMonthValue() == Constant.DATE.getMonthValue())
                 || (localDate.getYear() == Constant.DATE.getYear()) && (localDate.getMonthValue() == Constant.DATE.getMonthValue() + 1);
     }
 
     @Override
     public boolean livesInBigCIty(Student student) {
+
         return (Constant.BIG_CITIES.contains(student.getRentContract().getCity()));
     }
 
     @Override
     public boolean spouseGotRentLoan(Student student) {
+
         List<Loan> loans = findByStudent(student.getSpouse());
 
         if (loans == null)
