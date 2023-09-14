@@ -41,8 +41,8 @@ public class Menu {
     }
 
     public static void studentPanel(Student student){
-        System.out.println("1.get loan\n2.payments\n3.Exit");
         while (true){
+            System.out.println("1.get loan\n2.payments\n3.Exit");
             switch (scanner.nextLine()){
                 case "1" -> {
                     if(!ApplicationContext.studentService.hasGraduated(student))
