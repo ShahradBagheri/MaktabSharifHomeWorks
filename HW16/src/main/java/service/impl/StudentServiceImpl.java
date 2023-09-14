@@ -197,16 +197,16 @@ public class StudentServiceImpl implements StudentService {
     public boolean hasGraduated(Student student) {
         switch (student.getDegree()){
             case COLLAGE,MASTERS_NOT_CONNECTED -> {
-                return Constant.DATE.getYear() > student.getEntranceYear() + 2;
+                return Constant.DATE.getYear() >= student.getEntranceYear() + 2;
             }
             case BACHELOR_CONNECTED,BACHELOR_NOT_CONNECTED -> {
-                return Constant.DATE.getYear() > student.getEntranceYear() + 4;
+                return Constant.DATE.getYear() >= student.getEntranceYear() + 4;
             }
             case MASTERS_CONNECTED -> {
-                return Constant.DATE.getYear() > student.getEntranceYear() + 6;
+                return Constant.DATE.getYear() >= student.getEntranceYear() + 6;
             }
             case PHD_CONNECTED,PHD_NOT_CONNECTED,PROFESSIONAL_PHD -> {
-                return Constant.DATE.getYear() > student.getEntranceYear() + 5;
+                return Constant.DATE.getYear() >= student.getEntranceYear() + 5;
             }
         }
         return false;

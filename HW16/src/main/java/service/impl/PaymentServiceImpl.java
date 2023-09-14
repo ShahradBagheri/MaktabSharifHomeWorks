@@ -88,4 +88,9 @@ public class PaymentServiceImpl implements PaymentService {
         }
         return false;
     }
+
+    @Override
+    public boolean isPaid(Long id) {
+        return findById(id).getIsPaid();
+    }
 }

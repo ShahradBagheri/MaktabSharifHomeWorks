@@ -55,6 +55,11 @@ public class PaymentPanel {
             return;
         }
 
+        if(ApplicationContext.paymentService.isPaid(paymentId)){
+            System.out.println("you have already paid this payment");
+            return;
+        }
+
         Card card;
 
         boolean choosingBank = true;

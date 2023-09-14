@@ -15,4 +15,6 @@ public interface PaymentService {
     List<Payment> getUnpaidPayments(Student student);
 
     boolean studentOwnsPayment(Student student,Long id);
+
+    boolean isPaid(Long id);
 }
