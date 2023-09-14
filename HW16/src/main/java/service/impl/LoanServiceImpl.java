@@ -72,20 +72,6 @@ public class LoanServiceImpl implements LoanService {
     }
 
     @Override
-    public void delete(Loan loan) {
-        EntityTransaction entityTransaction = entityManager.getTransaction();
-        try{
-            entityTransaction.begin();
-
-            loanRepository.delete(loan);
-
-            entityTransaction.commit();
-        }catch (Exception e){
-            entityTransaction.rollback();
-        }
-    }
-
-    @Override
     public Loan findById(Long id) {
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try{
