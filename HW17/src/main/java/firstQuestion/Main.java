@@ -24,7 +24,7 @@ public class Main {
 //
 //        personService.update(person);
 
-        personService.delete(person);
+//        personService.delete(person);
 //
 //        System.out.println(personService.loadById(16L));
 //

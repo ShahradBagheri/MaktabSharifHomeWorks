@@ -1,13 +1,9 @@
 package firstQuestion.service.impl;
 
 import firstQuestion.connection.EntityManagerSingleton;
-import firstQuestion.connection.SessionFactorySingleton;
 import firstQuestion.model.Person;
-import firstQuestion.model.Student;
 import firstQuestion.repository.impl.PersonRepositoryImpl;
 import firstQuestion.service.PersonService;
-import org.hibernate.SessionFactory;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.util.List;

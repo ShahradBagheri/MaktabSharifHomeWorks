@@ -1,13 +1,10 @@
 package firstQuestion.service.impl;
 
 import firstQuestion.connection.EntityManagerSingleton;
-import firstQuestion.connection.SessionFactorySingleton;
-import firstQuestion.model.Student;
 import firstQuestion.model.enums.TeacherTier;
 import firstQuestion.repository.impl.TeacherRepositoryImpl;
 import firstQuestion.service.TeacherService;
 import firstQuestion.model.Teacher;
-import org.hibernate.SessionFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;

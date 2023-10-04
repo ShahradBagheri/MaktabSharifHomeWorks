@@ -1,12 +1,8 @@
 package firstQuestion.repository.impl;
 
 import firstQuestion.connection.EntityManagerSingleton;
-import firstQuestion.connection.SessionFactorySingleton;
 import firstQuestion.model.Student;
 import firstQuestion.repository.StudentRepository;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;

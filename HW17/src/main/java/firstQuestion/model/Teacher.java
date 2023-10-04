@@ -1,6 +1,6 @@
 package firstQuestion.model;
 
-import firstQuestion.enums.TeacherTier;
+import firstQuestion.model.enums.TeacherTier;
 
 import lombok.*;
 
