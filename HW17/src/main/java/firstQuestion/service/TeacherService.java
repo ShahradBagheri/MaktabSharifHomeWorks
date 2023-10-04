@@ -1,6 +1,6 @@
 package firstQuestion.service;
 
-import firstQuestion.enums.TeacherTier;
+import firstQuestion.model.enums.TeacherTier;
 import firstQuestion.model.Teacher;
 
 import java.util.List;

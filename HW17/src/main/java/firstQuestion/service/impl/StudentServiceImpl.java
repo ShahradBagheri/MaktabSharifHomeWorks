@@ -1,11 +1,9 @@
 package firstQuestion.service.impl;
 
 import firstQuestion.connection.EntityManagerSingleton;
-import firstQuestion.connection.SessionFactorySingleton;
 import firstQuestion.model.Student;
 import firstQuestion.repository.impl.StudentRepositoryImpl;
 import firstQuestion.service.StudentService;
-import org.hibernate.SessionFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -22,10 +20,10 @@ public class StudentServiceImpl implements StudentService {
         try {
             entityTransaction.begin();
 
-            Student studentOut = studentRepository.save(student);
+            student = studentRepository.save(student);
 
             entityTransaction.commit();
-            return studentOut;
+            return student;
         } catch (Exception e) {
             entityTransaction.rollback();
             return null;

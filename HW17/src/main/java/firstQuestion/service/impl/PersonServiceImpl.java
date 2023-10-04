@@ -23,10 +23,10 @@ public class PersonServiceImpl implements PersonService {
         try {
             entityTransaction.begin();
 
-            Person personOut = personRepository.save(person);
+            person = personRepository.save(person);
 
             entityTransaction.commit();
-            return personOut;
+            return person;
         } catch (Exception e) {
             entityTransaction.rollback();
             return null;
