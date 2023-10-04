@@ -1,42 +1,115 @@
 package firstQuestion.service.impl;
 
+import firstQuestion.connection.EntityManagerSingleton;
+import firstQuestion.connection.SessionFactorySingleton;
 import firstQuestion.model.Person;
+import firstQuestion.model.Student;
 import firstQuestion.repository.impl.PersonRepositoryImpl;
 import firstQuestion.service.PersonService;
+import org.hibernate.SessionFactory;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import java.util.List;
 
 public class PersonServiceImpl implements PersonService {
+
     private final PersonRepositoryImpl personRepository = new PersonRepositoryImpl();
+    private final EntityManager entityManager = EntityManagerSingleton.getInstanceEM();
 
     @Override
     public Person save(Person person) {
-        return personRepository.save(person);
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        try {
+            entityTransaction.begin();
+
+            Person personOut = personRepository.save(person);
+
+            entityTransaction.commit();
+            return personOut;
+        } catch (Exception e) {
+            entityTransaction.rollback();
+            return null;
+        }
     }
 
     @Override
     public void update(Person person) {
-        personRepository.update(person);
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        try {
+            entityTransaction.begin();
+
+            personRepository.update(person);
+
+            entityTransaction.commit();
+        } catch (Exception e) {
+            entityTransaction.rollback();
+        }
     }
 
     @Override
     public void delete(Person person) {
-        personRepository.delete(person);
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        try {
+            entityTransaction.begin();
+
+            personRepository.delete(person);
+
+            entityTransaction.commit();
+        } catch (Exception e) {
+            entityTransaction.rollback();
+        }
     }
 
     @Override
     public Person loadById(Long id) {
-        return personRepository.loadById(id);
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        try {
+            entityTransaction.begin();
+
+            Person person = personRepository.loadById(id);
+
+            entityTransaction.commit();
+
+            return person;
+        } catch (Exception e) {
+            entityTransaction.rollback();
+            return null;
+        }
     }
 
     @Override
     public List<Person> loadAll() {
-        return personRepository.loadAll();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        try {
+            entityTransaction.begin();
+
+            List<Person> people = personRepository.loadAll();
+
+            entityTransaction.commit();
+
+            return people;
+        } catch (Exception e) {
+            entityTransaction.rollback();
+            return null;
+        }
     }
 
     @Override
     public boolean contains(Person person) {
-        return personRepository.contains(person);
+        EntityTransaction entityTransaction = entityManager.getTransaction();
+        try {
+            entityTransaction.begin();
+
+            boolean contains = personRepository.contains(person);
+
+            entityTransaction.commit();
+
+            return contains;
+        } catch (Exception e) {
+            entityTransaction.rollback();
+            return false;
+        }
     }
 
     @Override
