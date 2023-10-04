@@ -1,9 +1,6 @@
 package firstQuestion.repository.impl;
 
 import firstQuestion.connection.EntityManagerSingleton;
-import firstQuestion.connection.SessionFactorySingleton;
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import firstQuestion.model.Person;
 import firstQuestion.repository.PersonRepository;
 
