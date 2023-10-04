@@ -1,4 +1,4 @@
-package firstQuestion.enums;
+package firstQuestion.model.enums;
 
 public enum TeacherTier {
     BEGINNER,
